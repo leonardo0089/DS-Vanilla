@@ -1,0 +1,89 @@
+:root
+{
+    --bg-dark: #1a2f3a;
+
+    --logo-height: 100px;
+    --header-height: 150px;
+    --aside-width: 100%;
+    --footer-height: 40px;
+    --menu-top-height: 75px;
+
+    --shadow: 
+        0 2px 23px 0 rgba(0,0,0,0.2),
+        0 2px 49px 0 rgba(0,0,0,0.06);
+}
+html, body
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+header
+{
+    grid-area: header;
+}
+
+main
+{
+    grid-area: main;
+}
+.main2
+{
+    grid-area: main2;
+    
+}
+
+.main3
+{
+    grid-area: main3;
+}
+
+.conteudoForm
+{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 110px 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        'header'
+        'main'
+        'main2'
+        'main3'
+        'main4';
+        
+
+}
+
+
+.footerContent
+{
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    flex-grow: 1;
+    justify-content: center;
+    height: 100%;
+}
+
+.rodape
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.footerContent p
+{
+    font-weight: 300;
+    margin: 0;
+}
+
+.containerBtn
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,110 @@
+:root
+{
+    --bg-dark: #1a2f3a;
+
+    --logo-height: 100px;
+    --header-height: 150px;
+    --aside-width: 100%;
+    --footer-height: 40px;
+    --menu-top-height: 75px;
+
+    --shadow: 
+        0 2px 23px 0 rgba(0,0,0,0.2),
+        0 2px 49px 0 rgba(0,0,0,0.06);
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body ,html
+{
+    width: 100%;
+    height: 100%;
+}
+
+.caixaConteudo
+{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 100%;
+    padding: 15px;
+    justify-content: center;
+}
+
+.dentroCaixa
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.formulario
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formularioContent
+{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario h2
+{
+    margin-bottom: 20px;
+}
+.fundored
+{
+    background-color: red;
+    width: 55px;
+    height: 10px;
+    margin-right: 90px;
+}
+.form1
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.form1 a
+{
+    padding-top: 10px;
+    text-decoration: none;
+    color: black;
+}
+.form1 a:hover
+{
+    text-decoration: none;
+    color: red;
+}
+
+.espaco
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.separar1
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

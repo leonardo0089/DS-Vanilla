@@ -1,0 +1,148 @@
+.navegacao
+{
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.logo
+{
+    color: white;
+    font-size: 1.8em;
+    border: none;
+}
+
+.logo:hover
+{
+    color: unset;
+    text-decoration: none;
+}
+
+.inicio
+{
+    color: white;
+    font-size: 16px;
+    justify-self: flex-end;
+    flex-basis:auto;
+    flex-wrap: wrap;
+    font-weight: bold; 
+    
+}
+
+.inicio:hover
+{
+    color: unset;
+    text-decoration: none;
+}
+
+
+
+
+.subtitulo 
+{
+    font-size: 25px;
+    font-weight: 100;
+}
+
+
+
+.underline
+{
+    background-color: #dc3545;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 5px;
+    border-radius: 5px;
+}
+
+@media (max-width: 450px)
+{
+    .conteudoHeader h1
+    {
+       padding-left: 10px;
+       text-align: center;
+    }
+    .inicio
+    {
+        color: white;
+        font-size: 10px;
+        justify-self: flex-end;
+        flex-basis:auto;
+        flex-wrap: wrap;
+        font-weight: bold;   
+    }
+    .subtitulo 
+    {
+        font-size: 13px;
+        text-align: center;
+        font-weight: 100;
+    }
+}
+
+@media (max-width: 680px)
+{
+    .conteudoHeader h1
+    {
+       padding-left: 10px;
+       text-align: center;
+    }
+    .inicio
+    {
+        color: white;
+        font-size: 10px;
+        justify-self: flex-end;
+        flex-basis:auto;
+        flex-wrap: wrap;
+        font-weight: bold;   
+    }
+    .subtitulo 
+    {
+        font-size: 13px;
+        text-align: center;
+        font-weight: 100;
+    }
+}
+
+
+@media(max-width: 916px)
+{
+    .direcaoJumbo
+    {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+       
+        
+    }
+    .conteudoJumbo
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .conteudoTextos
+    {
+        text-align: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        
+        
+    }
+    .conteudoFoto img
+    {
+        
+        width: 352px;
+    }
+    .conteudoFoto
+    {
+        padding: 75px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

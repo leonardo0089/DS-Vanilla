@@ -1,0 +1,47 @@
+:root
+{
+    --bg-dark: #1a2f3a;
+
+    --logo-height: 100px;
+    --header-height: 150px;
+    --aside-width: 100%;
+    --footer-height: 40px;
+    --menu-top-height: 75px;
+
+    --shadow: 
+        0 2px 23px 0 rgba(0,0,0,0.2),
+        0 2px 49px 0 rgba(0,0,0,0.06);
+}
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header
+{
+    grid-area: header;
+
+}
+
+main
+{
+    grid-area: main;
+}
+footer
+{
+    grid-area: footer;
+}
+
+body
+{
+    display: grid;
+    grid-template-columns: 480px 2fr;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+        'header main';
+        
+
+}

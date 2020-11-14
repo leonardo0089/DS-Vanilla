@@ -1,0 +1,102 @@
+.direcaoCard
+{
+    display: flex;
+    padding: 80px 0px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.boxCards
+{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card1
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    height: 150px;
+    width:  150px;
+    background-color: #dc3545;
+}
+.card2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 100px;
+    height: 150px;
+    width: 150px;
+    background-color: #dc3545;
+}
+.card3
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 100px;
+    height: 150px;
+    width: 150px;
+    background-color: #dc3545;
+}
+
+.primeiroCard
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    
+}
+.segundoCard
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+.terceiroCard
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+.colunaCard1
+{
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.colunaCard1 h5
+{
+    font-weight: 200;
+    font-size: 35px;
+}
+.colunaCard1 p
+{
+    font-size: 20px;
+    color: rgb(153, 153, 153);
+}

@@ -1,0 +1,366 @@
+.conteudoSobrePJ
+{
+    grid-area: contSobre;
+}
+.conteudoFuncionalidades
+{
+    grid-area: func;
+}
+
+
+.conteudoPerfilPJ
+{
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+        'contSobre func'
+    ;
+}
+
+.conteudoSobrePJ
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 15px;
+    background-color: rgba(194, 194, 194, 0.452);
+}
+
+.areaUserPJ
+{
+    display: flex;
+    height: 220px;
+    background-color: white;
+    width: 95%;
+    border-radius: 5px;
+}
+
+.conteudoFuncionalidades
+{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(194, 194, 194, 0.452);
+}
+
+/*Area da foto*/
+
+.areadaFotoPJ
+{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+   margin: 0;
+}
+
+
+.dadosComplementaresPJ
+{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.containerFotoUserPJ
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.containerFotoUserPJ img
+{
+    border-radius: 80px;
+    border: 1px solid rgba(121, 120, 120, 0.808);
+}
+
+/*//////////////////////////////////////////////////////////////*/
+
+/*Area dos dados Complementares*/
+
+.tituloAreaComplementarPJ
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.fonteParagrafo
+{
+    color: rgba(34, 33, 33, 0.562);
+    
+}
+
+.fonteParagrafo:hover
+{
+    color: var(--red);
+}
+
+.linkparaAlterarDados
+{
+    padding-top: 5px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    
+}
+
+.linkparaAlterarDados p
+{
+    margin: 0;
+}
+
+
+
+/*///////////////////////////////////////////////////////////////*/
+
+/*Area do Financeiro PJ*/
+
+.areaFinanceiroPJ
+{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px 15px 0px;
+    height: 420px;
+    width: 95%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.containerTituloPJFinanceiro
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+.containerTituloPJFinanceiro h4
+{
+    font-weight: 300;
+    padding-bottom: 15px;
+}
+
+.linksdoFinanceiroPJ
+{
+    display: flex;
+    flex-direction: column;
+}
+
+/*//////////////////////////////////////////////////////////////*/
+
+
+/*Continuação do cadastro do usuario PJ*/
+
+
+.conteudodoCadastro
+{
+    background-color: white;
+    padding: 10px 25px 10px 25px;
+    margin: 10px 25px 10px 25px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    grid-area: conteudocadPJ;
+}
+
+.containercadastroPJ1
+{
+    display: grid;
+    grid-template-columns: 100%;
+    overflow: hidden;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+        'conteudocadPJ'
+    ;    
+}
+
+.titulodoCadPJ
+{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.formulariosPJ1
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.contentBTN
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.tamanhodo-card-pagamento-pj
+{
+    height: 70%;
+    width: 90%;
+}
+
+.comprar-pag-esquerda-pj
+{
+    width: 100%;
+}
+
+.foto-prod-1
+{
+    width: 45%;
+}
+
+/*///////////////////////////////////////////////////////////////*/
+
+/*Area do cadastro de novas vagas*/
+
+.container-postar-nova-vaga
+{
+    display: flex;
+    background-color: rgba(194, 194, 194, 0.452);
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+.pesodaFonte300
+{
+    font-weight: 300;
+}
+.configLinks
+{
+    color: white;
+    text-decoration: none;    
+}
+.configLinks:hover
+{
+    color: white;
+    text-decoration: none; 
+}
+
+.container-interno-postar-vaga
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 55%;
+    height: 100%;
+    border-radius: 6px;
+    padding-left: 30px;
+    margin: 25px 10px 25px 10px;
+}
+
+.formulario-nova-vaga
+{
+
+    width: 75%;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+/*//////////////////////////////////////////////////////////////*/
+
+/*Lista de Vagas Postadas*/
+
+.lista-de-vagas-postadas
+{
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    margin-top: 15px;
+    background-color: white;
+    height: 95%;
+    width: 95%;    
+}
+
+.iframe-vagas-postadas
+{
+    width: 95%;
+    height: auto;
+    padding: 15px 0px 15px 0px;
+}
+.container-titulo-vaga-postada
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:  #dc3545;
+    height: 60px;
+    border-radius: 10px 10px 0px 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.back-do-span
+{
+    background-color: #dc3545;
+    color: white;
+}
+
+.card-da-vaga-postada
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-right: 15px;    
+}
+
+.conteudo-da-top
+{
+    height: 15%;
+}
+
+.conteudo-da-bottom
+{
+    display: flex;
+    height: 25%;
+    border-right: 1px solid #75757594;
+    border-bottom: 1px solid#75757594;
+    border-left: 1px solid#75757594;
+    border-radius: 0px 0px 5px 5px;
+}
+.informacoes-da-vaga-postada
+{
+    display: flex;
+    flex-direction: column;
+    width: 81%;  
+    padding-left: 15px;
+    padding-right: 5px;
+    padding-top: 10px;
+    border-right: 1px solid rgba(100, 99, 99, 0.404); 
+    flex-wrap: wrap; 
+}
+.informacoes-sobre-vaga
+{
+    width: 100%;
+}
+
+
+.botoes-de-controle-vaga-postada
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 19%;
+}
+
+
+
+/*/////////////////////////////////////////////////////////////*/
+
+/*Area de Busca de Funcionarios*/
+
+
+
+
+
+
+/*////////////////////////////////////////////////////////////*/

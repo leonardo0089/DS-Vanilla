@@ -1,0 +1,70 @@
+.conteudoMain
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0px 15px;
+}
+
+.navegacao
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navegacao img
+{
+    width: 135px;
+    height: 135px;
+}
+
+.navegacao p
+{
+    margin: 0;
+    color: rgb(100, 100, 100);
+}
+
+.navegacao a
+{
+    color: rgb(100, 100, 100);
+    text-decoration: none;
+    
+}
+
+.tituloContainer
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.navegacao a:hover
+{
+    color: red;
+}
+
+
+.containerFormulario
+{
+    display: flex;
+    flex-grow: 1;
+}
+
+.containerInterno
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0px 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerForm
+{
+    width: 450px;
+    display: flex;
+    flex-grow: 1;
+}

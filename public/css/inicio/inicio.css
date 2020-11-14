@@ -1,0 +1,119 @@
+:root
+{
+    --bg-dark: #1a2f3a;
+
+    --logo-height: 100px;
+    --header-height: 150px;
+    --aside-width: 100%;
+    --footer-height: 40px;
+    --menu-top-height: 75px;
+
+    --shadow: 
+        0 2px 23px 0 rgba(0,0,0,0.2),
+        0 2px 49px 0 rgba(0,0,0,0.06);
+}
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+header
+{
+    grid-area: header1;
+}
+
+main
+{
+    grid-area: main1;
+}
+
+body
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row: 100%;
+    grid-template-areas: 
+        'header1 main1';
+}
+
+header
+{
+    background-image: linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%);
+    color: white;
+    
+    height: 100vh;
+}
+
+main
+{
+    color: white;
+    background-image: linear-gradient( 135deg, #FAD7A1 10%, #E96D71 100%);
+}
+
+
+
+.containerConteudo
+{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.containerInterno
+{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+  
+    .btn-grad {background-image: linear-gradient(to right, #D31027 0%, #EA384D  51%, #D31027  100%)}
+    .btn-grad {
+       margin: 10px;
+       padding: 10px 30px;
+       text-align: center;
+       text-transform: uppercase;
+       transition: 0.5s;
+       background-size: 200% auto;
+       color: white;            
+       border-radius: 10px;
+       border: none;
+       display: block;
+       width: 190px;
+     }
+
+     .btn-grad:hover {
+       background-position: right center; /* change the direction of the change here */
+       color: #fff;
+       text-decoration: none;
+     }
+    
+     .botao
+     {
+         display: flex;
+         justify-content: center;
+     }
+
+     .botao a
+     {
+         color: white;
+     }
+
+     .botao a:hover
+     {
+         text-decoration: none;
+         color: white;
+     }
+

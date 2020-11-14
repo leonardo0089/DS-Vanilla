@@ -1,0 +1,39 @@
+.primeiroContainer
+{
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.containerFora
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.descr
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+    padding-left: 15px;
+    width: 250px;
+    
+}
+
+.formulario
+{
+    width: 550px;
+    font-weight: 300;
+}
+
+.orientacao
+{
+    padding-bottom: 30px;
+}

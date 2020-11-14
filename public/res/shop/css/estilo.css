@@ -1,0 +1,60 @@
+:root
+{
+    --bg-dark: #1a2f3a;
+
+    --logo-height: 100px;
+    --header-height: 150px;
+    --aside-width: 100%;
+    --footer-height: 40px;
+    --menu-top-height: 75px;
+
+    --shadow: 
+        0 2px 23px 0 rgba(0,0,0,0.2),
+        0 2px 49px 0 rgba(0,0,0,0.06);
+}
+*
+{
+    box-sizing: border-box;
+}
+
+Header.header
+{
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+a.page-link
+{
+  color: red;
+}
+.Page
+{
+    display: flex;
+    justify-content: center;
+}
+
+div.form-row
+{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+form div.card {
+    margin: 0;
+    margin-left: 250px;
+
+}
+
+div.conteudo
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
