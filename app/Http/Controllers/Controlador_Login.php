@@ -36,7 +36,7 @@ class Controlador_Login extends Controller
                 break;
                 case 2:
                     Auth::login($user);
-                    return \redirect()->route('site.perfilPJ');
+                    return \redirect()->route('dash.perfil');
                 break;
             }
             

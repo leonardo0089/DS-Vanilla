@@ -1,16 +1,12 @@
 <?php
 
-
 Route::get('/cadpj', function () {
     return view('pf.cadpj');
 })->name('site.cadpj');
 
 
 // Area do Usuario PJ
-Route::get('/cadpj/cadastroPJ', function () 
-{
-    return view('pj.cadastroPJ');
-})->name("site.cadastroPJc");
+Route::get('/perfil-pj/atualizar-dados','ViewsMake@alterarDadosView')->name("site.cadastroPJc");
 
 Route::get('/cadpj/atualizar-dados-PJ', function () 
 {
@@ -22,11 +18,6 @@ Route::get('/cadpj/comprar-premium-pj', function ()
     return view('pj.comprar-premium-pj');
 })->name("perfil.comprar-premium-pj");
 
-
-Route::get('/perfilPJ', function()
-{
-    return view('pj.perfilPJ');
-})->name('site.perfilPJ');
 
 //Rotas da navegação superior
 
@@ -65,6 +56,8 @@ Route::get('/busca++--', function()
 //Cadastrando nova Pessoa Juridica
 Route::post('/cad-pj', 'Cadastro_Users@insertUserPJ')->name('cad-pj');
 Route::post('/cad-pj/cont', 'Cadastro_Users@saveNewPJ')->name('cad-pj-cont');
+Route::post('/perfil-pj/Atualizando-cadastro', 'Cadastro_Users@attPJCad')->name('att.pjcad');
+Route::get('/perfil-pj', 'ViewsMake@perfil')->name('dash.perfil');
 
 Route::get('/cont-cadastro', function()
 {

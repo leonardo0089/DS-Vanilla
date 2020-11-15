@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -204,25 +204,34 @@ class Cadastro_Users extends Controller
                         'sobre_empresa' => $request->sobre_emp,
                         'receb_prop' => $request->receb_prop
                     ]);
-        /*DB::insert('insert into 
-        usuario_pj (endereco, foto, cidade, estado, cep, cel, tel_fixo, tipo_contratacao, tipo_empresa, sobre_empresa, receb_prop) 
-        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-        [
-            $request->endereco,
-            $path,
-            $request->cidade,
-            $request->estado,
-            $request->cep,
-            $request->cel,
-            $request->tel_fixo,
-            $request->tipo_contratacao,
-            $request->tipo_empresa,
-            $request->sobre_emp,
-            $request->receb_prop
-            
-        ]);*/
         
         return redirect()->route('site.login');
+    }
+
+    public function attPJCad(Request $request)
+    {
+
+        $id = Auth::id();
+
+        DB::table('usuario_pj')
+            ->where('fk_id_usuario', $id)
+            ->update(
+                [
+                        'endereco' => $request->endereco,
+                        'cidade' => $request->cidade,
+                        'estado' => $request->estado,
+                        'cep' => $request->cep,
+                        'cel' => $request->cel,
+                        'tel_fixo' => $request->tel_fixo,
+                        'tipo_contratacao' => $request->tipo_contratacao,
+                        'tipo_empresa' => $request->tipo_empresa,
+                        'sobre_empresa' => $request->sobre_emp,
+                        'receb_prop' => $request->receb_prop
+
+                ]);
+
+
+        return redirect()->route('dash.perfil');
     }
 
 

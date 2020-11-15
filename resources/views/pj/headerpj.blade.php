@@ -24,12 +24,12 @@
             </div>
             <div class="links">
                 <ul>
-                    <li><a href="{{ route('site.perfilPJ') }}">Inicio</a></li>
+                    <li><a href="{{ route('dash.perfil') }}">Inicio</a></li>
                     <li><a href="{{ route('perfil.vagas-postadas-pj') }}">Vagas</a></li>
                     <li><a href="{{ route('perfil.postar-vaga') }}">Postar Vaga</a></li>
                     <li><a href="{{ route('perfil.chat-pj') }}">Chat</a></li>
                     <li><a href="{{ route('perfil.busca-funcionario') }}">Buscar</a></li>
-                    <li><a href="">Sair</a></li>
+                    <li><a href="{{ route('logout')}}">Sair</a></li>
                 </ul>
             </div>
         </div>

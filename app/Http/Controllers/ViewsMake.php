@@ -10,34 +10,108 @@ class ViewsMake extends Controller
     public function perfil(Request $req)
     {
         if(Auth::check() === true){
-            $varr = $this->carregaFoto($req);
-            
-            foreach($varr as $chave)
-            {
-                $ft = $chave->foto;
-            }
+            $tipo = Auth::user();
 
-            $data = $this->getSession($req);
-            $id = Auth::id();
-            //$foto = DB::table('curriculo')->where('fk_id_pf',$id)->value('foto');
-           foreach($data as $key)
+            switch($tipo->type)
             {
-                $v = $key->nome_sobrenome;
-                $diasPremium = $key->dias_premium;
+                case 1:
+                    $varr = $this->carregaFoto($req);
+            
+                    foreach($varr as $chave)
+                    {
+                        $ft = $chave->foto;
+                    }
+
+                    $data = $this->getSession($req);
+                    $id = Auth::id();
+                    //$foto = DB::table('curriculo')->where('fk_id_pf',$id)->value('foto');
+                foreach($data as $key)
+                    {
+                        $v = $key->nome_sobrenome;
+                        $diasPremium = $key->dias_premium;
+                    }
+                    return view('perfilPF', 
+                    [
+                        'ds' => $v,
+                        'dias' => $diasPremium,
+                        'foto' => $ft
+                    ]);
+                break;
+                case 2:
+                    $ft = $this->carregarFotoPJ($req);
+                    //return dd($ft);
+
+                    foreach($ft as $key2)
+                    {
+                        $nome = $key2->nome_fantasia;
+                        $foto = $key2->foto;
+                    }
+
+
+                    return view('pj.perfilPJ',
+                    [
+                        'nome' => $nome,
+                        'foto' => $foto,
+                        'premium' => $tipo->dias_premium
+                    ]);
+                break;
             }
-            return view('perfilPF', 
-            [
-                'ds' => $v,
-                'dias' => $diasPremium,
-                'foto' => $ft
-            ]);
+            
         }else
         {
            return \redirect()->route('site.login');
         }
 
+        
+        
+        
     }
+    
+    public function alterarDadosView(Request $req)
+    {
+        if(Auth::check() === true)
+        {
+            $tipo = Auth::user();
+            $ft = $this->carregarFotoPJ($req);
+            foreach($ft as $key2)
+            {
+                $nome = $key2->nome_fantasia;
+                $foto = $key2->foto;
+            }
+            $dados = DB::table('usuario_pj')->where('fk_id_usuario', $tipo->id)->get();
 
+            foreach($dados as $key)
+            {
+                $endereco = $key->endereco;
+                $estado = $key->estado;
+                $cidade = $key->cidade;
+                $cep = $key->cep;
+                $cel = $key->cel;
+                $tel_fixo = $key->tel_fixo;
+                $tipo_contratacao = $key->tipo_contratacao;
+                $tipo_empresa = $key->tipo_empresa;
+                $sobre_empresa = $key->sobre_empresa;
+                $receb_prop = $key->receb_prop;
+            }
+
+            return view('pj.cadastroPJ',
+            [
+                'nome' => $nome,
+                'foto' => $foto,
+                'premium' => $tipo->dias_premium,
+                'end' => $endereco,
+                'est' => $estado,
+                'cid' => $cidade,
+                'cep' => $cep,
+                'cel' => $cel,
+                'tf' => $tel_fixo,
+                'tc' => $tipo_contratacao,
+                'te' => $tipo_empresa,
+                'se' => $sobre_empresa,
+                'rp' => $receb_prop,
+            ]);
+        }
+    }
     public function getSession(Request $request)
     {
         $id = Auth::id();
@@ -55,7 +129,6 @@ class ViewsMake extends Controller
     public function carregaFoto(Request $req)
     {
         $id = Auth::id();
-        $s = $req->session()->get('id');
         $foto = DB::select('select foto from curriculo as c 
         inner join usuario_pf as pf 
         on c.fk_id_pf = pf.id_pf 
@@ -64,6 +137,13 @@ class ViewsMake extends Controller
         [
             'id' => $id
         ]);
+        return $foto;
+    }
+
+    public function carregarFotoPJ(Request $request)
+    {
+        $id = Auth::id();
+        $foto = DB::table('usuario_pj')->where('fk_id_usuario', $id)->get();
         return $foto;
     }
 

@@ -8,12 +8,12 @@
         <div class="areaUserPJ">
             <div class="areadaFotoPJ">
                 <div class="containerFotoUserPJ">
-                    <img src="../../res/site/img/stefany.jpg" width="150" height="140" alt="">
+                <img src="http://localhost/DS-Vanilla/ds-vanilla/public/storage/{{$foto ?? ''}}" width="150" height="140" alt="">
                 </div>
             </div>
             <div class="dadosComplementaresPJ">
                 <div class="tituloAreaComplementarPJ">
-                    <h5 style="font-weight: 300;">Ola!<br>Nome da Empresa</h5>
+                    <h5 style="font-weight: 300;">Ola!<br>{{ $nome ?? '' }}</h5>
                 </div>
                 <div class="linkparaAlterarDados">
                     <a href="{{ route('site.cadastroPJc') }}"><p class="fa fa-user  fonteParagrafo">  Alterar Cadastro</p></a>
@@ -33,7 +33,7 @@
             </div>
             <div class="linksdoFinanceiroPJ">
                 <div class="linkparaAlterarDados">
-                    <p class="fa fa-calendar  ">  Dias Premium Restantes: 30 dias !</p>
+                    <p class="fa fa-calendar  ">  Dias Premium Restantes: {{$premium ?? ''}} dias !</p>
                 </div>
                 <div class="linkparaAlterarDados">
                     <a href="{{ route('perfil.atualizar-dados-pj') }}"><p class="fa fa-money  fonteParagrafo">  Atualizar Forma de Pagamento</p></a>
