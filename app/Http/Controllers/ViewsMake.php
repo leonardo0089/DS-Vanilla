@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+use App\Http\Controllers\NovaVaga;
 class ViewsMake extends Controller
 {
     public function perfil(Request $req)
@@ -160,6 +161,8 @@ class ViewsMake extends Controller
         [
             'id' => $id
         ]);
+
+
     }
 
 
@@ -171,4 +174,36 @@ class ViewsMake extends Controller
         Session::flush();
         return \redirect()->route('site.login');
     }
+
+    //Carrega view nova Vaga
+
+    public function novaVaga(Request $request)
+    {
+        $user = Auth::user();
+
+       // dd($user);
+
+
+        if(Auth::check() === true)
+        {
+
+            if($user->type == 2)
+            {
+                return view('postar-vagas-pj');
+            }else
+            {
+                return \redirect()->route('site.login'); 
+            }
+        }else
+        {
+            return \redirect()->route('site.login');
+        }
+    }
+
+
+    
+
+
+
+
 }

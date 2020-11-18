@@ -21,10 +21,7 @@ Route::get('/cadpj/comprar-premium-pj', function ()
 
 //Rotas da navegação superior
 
-Route::get('/perfilPJ/postar-nova-vaga', function()
-{
-    return view('postar-vagas-pj');
-})->name('perfil.postar-vaga');
+Route::get('/perfilPJ/postar-nova-vaga', 'ViewsMake@novaVaga')->name('perfil.postar-vaga');
 
 
 Route::get('/perfilPJ/chat-pj', function()
@@ -32,15 +29,10 @@ Route::get('/perfilPJ/chat-pj', function()
     return view('chat-pj');
 })->name('perfil.chat-pj');
 
-Route::get('/perfilPJ/vagas-postadas', function()
-{
-    return view('vagas-postadas-pj');
-})->name('perfil.vagas-postadas-pj');
+Route::get('/perfilPJ/vagas-postadas', 'NovaVaga@makeVagaPost')->name('perfil.vagas-postadas-pj');
 
-Route::get('/listagem++', function()
-{
-    return view('vagas-postadas-listagem');
-})->name('perfil.listagem++');
+Route::get('/listagem++','NovaVaga@makenewVaga')->name('perfil.listagem++');
+
 
 Route::get('/perfilPJ/busca-funcionario', function()
 {
@@ -57,7 +49,22 @@ Route::get('/busca++--', function()
 Route::post('/cad-pj', 'Cadastro_Users@insertUserPJ')->name('cad-pj');
 Route::post('/cad-pj/cont', 'Cadastro_Users@saveNewPJ')->name('cad-pj-cont');
 Route::post('/perfil-pj/Atualizando-cadastro', 'Cadastro_Users@attPJCad')->name('att.pjcad');
+
 Route::get('/perfil-pj', 'ViewsMake@perfil')->name('dash.perfil');
+//Cadastrando nova vaga
+Route::post('/cadastrando', 'NovaVaga@cadastrarVaga')->name('perfil.cadVaga');
+
+//View da vaga
+Route::get('/editar-vaga/{id_vaga}', 'NovaVaga@carregar_Alterar')->name('carregar.alterar');
+
+//Atualizador de vagas
+
+Route::post('/atualizando-vaga/{id_da_vaga}', 'NovaVaga@atualizar_Vaga')->name('carregar.salvando.alteracao');
+
+//Rota de teste
+Route::get('/teste', 'NovaVaga@detalhesVagas_Postadas')->name('teste');
+//Descrição da vaga
+Route::get('/detalhes-vaga/{n_vaga}', 'NovaVaga@detalhesVagas_Postadas')->name('perfil.pj.detalhesVaga');
 
 Route::get('/cont-cadastro', function()
 {

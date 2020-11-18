@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/res/site/css-Perfil/perfilPJ.css">
     <link rel="stylesheet" href="/res/site/css-Vaga/sobreVaga.css">
     
-    <title>DS-Vanilla-CadastroPF</title>
+    <title>@yield('titulopagina')</title>
 </head>
 
 <body>

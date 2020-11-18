@@ -1,3 +1,6 @@
+@section('titulopagina')
+   Perfil - Usuario PF
+@endsection
 @include('pf.header')
 <div class="conteudoForm">
 <div class="containerUser">
