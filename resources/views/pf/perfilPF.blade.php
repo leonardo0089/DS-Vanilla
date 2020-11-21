@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <hr>
-                <a href="{{ route("site.cadastroPF") }}">Atualizar CV</a>
+                <a href="{{ route('perfil.atualizarCV') }}">Atualizar CV</a>
                 <a href="{{ route('logout') }}">Sair</a>
             </div>
         </div>

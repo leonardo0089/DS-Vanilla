@@ -65,4 +65,9 @@ Route::get('/logout', 'ViewsMake@logout')->name('logout');
 Route::post('/cad-pf', 'Cadastro_Users@insertUserPF')->name('cad-pf');
 Route::post('/cadCV', 'Cadastro_Users@inserindoCurriculo')->name('cadCV');
 
+//Rota para a atualização de Curriculo
+
+Route::get('/atualizar-curriculo', 'ViewsMake@carregarCurriculo')->name('perfil.atualizarCV');
+Route::post('/atualizando-curriculo', 'ViewsMake@atualizaCV')->name('perfil.atualizandoCV');
+
 

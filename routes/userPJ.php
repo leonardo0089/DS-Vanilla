@@ -62,7 +62,7 @@ Route::get('/editar-vaga/{id_vaga}', 'NovaVaga@carregar_Alterar')->name('carrega
 Route::post('/atualizando-vaga/{id_da_vaga}', 'NovaVaga@atualizar_Vaga')->name('carregar.salvando.alteracao');
 
 //Rota de teste
-Route::get('/teste', 'NovaVaga@detalhesVagas_Postadas')->name('teste');
+Route::get('/teste', 'ViewsMake@curriculoPercent')->name('teste');
 //Descrição da vaga
 Route::get('/detalhes-vaga/{n_vaga}', 'NovaVaga@detalhesVagas_Postadas')->name('perfil.pj.detalhesVaga');
 

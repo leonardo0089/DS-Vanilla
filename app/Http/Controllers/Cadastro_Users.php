@@ -69,9 +69,9 @@ class Cadastro_Users extends Controller
             //Inserindo formação Academica
             
             DB::insert('insert into formacao 
-            (instituicao, pais, cidade, formacao, nivel, periodo, data_inicio, data_conclusao, status, fk_curriculo) 
+            (instituicao, pais, cidade, formacao, nivel, periodo, data_iniciof, data_conclusao, status, fk_curriculo) 
             values 
-            (:instituicao, :pais, :cidade, :formacao, :nivel, :periodo, :data_inicio, :data_conclusao, :status, :fk_curriculo)', 
+            (:instituicao, :pais, :cidade, :formacao, :nivel, :periodo, :data_iniciof, :data_conclusao, :status, :fk_curriculo)', 
             [
                 ':instituicao' => $request->instituicao,
                 ':pais' => $request->pais,
@@ -79,7 +79,7 @@ class Cadastro_Users extends Controller
                 ':formacao' => $request->formacao,
                 ':nivel' => $request->nivel,
                 ':periodo' => $request->periodo,
-                ':data_inicio' => $request->data_inicio,
+                ':data_iniciof' => $request->data_inicio,
                 ':data_conclusao' => $request->conclusao_data,
                 ':status' => $request->statuses,
                 ':fk_curriculo' => $uId
