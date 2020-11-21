@@ -26,3 +26,8 @@
           t.value += texto.substring(0,1)
       }
   }
+
+  function progresso(qtd)
+  {
+    
+  }

@@ -31,6 +31,7 @@ class ViewsMake extends Controller
                         $v = $key->nome_sobrenome;
                         $diasPremium = $key->dias_premium;
                     }
+                    
                     return view('perfilPF', 
                     [
                         'ds' => $v,
@@ -168,8 +169,10 @@ class ViewsMake extends Controller
         }
 
         //Contando quantos registros foram achados
-        var_dump(count((array)$pesq[0]));
-        return $pesq;
+        $valor = count((array)$pesq[0]); 
+
+
+        return $valor;
     }
 
 
