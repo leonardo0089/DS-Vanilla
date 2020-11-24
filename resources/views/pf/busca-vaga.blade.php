@@ -25,7 +25,7 @@
     <table class="table tabela">
         <thead class="thead-dark bg-gradient-dark">
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">N° Vagas</th>
             <th scope="col">Nome Empresa</th>
             <th scope="col">Nome da Vaga</th>
             <th scope="col">Ações</th>

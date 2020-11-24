@@ -259,5 +259,50 @@ class Cadastro_Users extends Controller
     }
 
 
+    public function cadastrar_forma_pagamento_view(Request $request)
+    {
+        $id = Auth::id();
+        if(Auth::check() === true)
+        {
+            $dados = DB::select('select * from dados_pagamento where fk_id_user = ?', [$id]);
+            if(count($dados) != 0 )
+            {
+                
+
+                return view('dados-Compra-Att',
+                [
+                    'lista' => $dados[0]
+                ]);
+            }else{
+
+            return view('dados-Compra-Att');
+            }
+        }
+    }
+
+    public function cadastrar_forma_pagamento(Request $request)
+    {
+        if(Auth::check() === true)
+        {
+            $id_user = Auth::id();
+
+            DB::insert('insert into dados_pagamento 
+                        (fk_id_user, nome_pessoa, tipo_pagamento, endereco, cpf, estado, celular) 
+                        values (?, ?, ?, ?, ?, ?, ?)', 
+                        [
+                            $id_user,
+                            $request->nome,
+                            $request->tipo_pg,
+                            $request->end,
+                            $request->cpf,
+                            $request->estado,
+                            $request->celular
+                        ]);
+
+                   return redirect()->route('dash.perfil');
+        }
+    }
+
+
 
 }

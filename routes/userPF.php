@@ -17,10 +17,7 @@ Route::get('/perfilPF/chat', function ()
     return view('pf.chat');
 })->name('perfil.chat');
 
-Route::get('/perfilPF/candidaturas', function ()
-{
-    return view('pf.candidaturas');
-})->name('perfil.candidaturas');
+Route::get('/perfilPF/candidaturas', 'NovaVaga@lista_de_candidaturas_view')->name('perfil.candidaturas');
 // Procurando a vaga
 Route::get('/perfilPF/buscavagas', function()
 {
@@ -42,10 +39,6 @@ Route::get('/detalhes-vaga/{lista}/{i}','NovaVaga@dados_da_vaga_pf')->name('perf
 
 //Abrindo menu laterais
 
-Route::get('/perfilPF/atualizardadosPG', function ()
-{
-    return view('pf.dados-Compra-Att');
-})->name('perfil.dadosAtt');
 
 
 Route::get('/perfilPF/comprarPremium', function ()
@@ -68,6 +61,19 @@ Route::get('/atualizar-curriculo', 'ViewsMake@carregarCurriculo')->name('perfil.
 Route::post('/atualizando-curriculo', 'ViewsMake@atualizaCV')->name('perfil.atualizandoCV');
 
 //Rota de Teste
-Route::get('/teste01', 'NovaVaga@dados_da_vaga_pf');
+Route::get('/teste01', 'NovaVaga@lista_de_candidaturas');
+
+
+//Candidatando-se
+
+Route::get('/candidatando/{id_vaga}/{fk_pj}', 'NovaVaga@candidatando_se')->name('perfil.pf.candidatar');
+
+//Verificando candidaturas
+
+Route::get('/vaga-candidatado/{id}/{nome}', 'NovaVaga@candidatura_vaga')->name('perfil.pf.cands');
+
+//Cadastrando forma de Pagamento
+Route::get('/perfilPF/atualizardadosPG/view', 'Cadastro_Users@cadastrar_forma_pagamento_view')->name('perfil.pf.att.pgt');
+Route::post('/perfilPF/atualizardadosPG/atualizando','Cadastro_Users@cadastrar_forma_pagamento')->name('perfil.pf.cadpgto');
 
 

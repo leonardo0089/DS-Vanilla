@@ -945,3 +945,49 @@ hr.novaHR
     margin-left: 10px;
     height: 17%;
 }
+
+/* Perfil Modal*/
+
+.header-modal
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.foto-modal img
+{
+    border-radius: 70px;
+}
+
+.checked {
+    color: orange;
+  }
+
+  .titulo-modal-user
+  {
+      display: flex;
+      justify-content: flex-start;
+      
+  }
+  
+  
+  .infos-basicas
+  {
+      display: flex;
+      margin-top: 10px;
+      justify-content: space-around;
+      
+  }
+
+  .ultimas-exp
+  {
+      margin-top: 10px;
+  }
+
+  .ultimas-exp-cont
+  {
+      margin-top: 15px;
+      padding: 15px 0px 0px 45px;
+  }

@@ -32,13 +32,18 @@ class ViewsMake extends Controller
                         $diasPremium = $key->dias_premium;
                     }
                     $percent = $this->curriculoPercent($req);
+
+                    $lista = $this->listaCV($req);
+
+                    //dd($lista);
                     
                     return view('perfilPF', 
                     [
                         'ds' => $v,
                         'dias' => $diasPremium,
                         'foto' => $ft,
-                        'percent' => $percent
+                        'percent' => $percent,
+                        'listagem' => $lista
                     ]);
                 break;
                 case 2:
@@ -236,6 +241,36 @@ class ViewsMake extends Controller
         }else
         {
             return \redirect()->route('site.login');
+        }
+    }
+
+    public function listaCV(Request $request)
+    {
+        $user = Auth::user();
+        
+        if(Auth::check() === true)
+        {
+            $meuid = $this->getSession($request);
+            $id = Auth::id();
+            if($user->type == 1)
+            {
+                $pesq = DB::select('select * from usuario_pf as pf 
+                inner join curriculo as cur on (pf.id_pf = cur.fk_id_pf)
+                inner join experiencias as exxp on (cur.id_curriculo = exxp.fk_id_curriculo_exp)
+                inner join formacao as form on (cur.id_curriculo = form.fk_curriculo)
+                inner join redes_sociais as rs on (cur.id_curriculo = rs.fk_curriculo) where pf.fk_id_usuario = :id',
+                [
+                    'id' => $id
+                ]);
+                    
+                foreach($pesq as $key)
+                {
+                    $lista = $key;
+                }
+                
+                return $lista;
+               
+            }
         }
     }
 

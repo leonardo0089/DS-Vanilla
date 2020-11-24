@@ -23,7 +23,7 @@
                             <label>Descrição das Atividades</label>
                             <textarea id="" cols="35" rows="5" name="dados_do_usuario">{{ $lista->desc_atividades }}</textarea>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5 ml-3">
                             <label for="inputEmail4">Nacionalidade</label>
                             <select class="form-control" name="nacionalidade">
                                 <option>Selecione uma Opção</option>

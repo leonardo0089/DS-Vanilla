@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 use App\Models\Vagas;
+use App\Http\Controllers\ViewsMake;
 class NovaVaga extends Controller
 {
     public function cadastrarVaga(Request $request)
@@ -304,7 +305,7 @@ class NovaVaga extends Controller
 
             $foto = $listagem[0]->foto;
 
-            
+            //dd($lista);
             return view('detalhesVaga',
             [
                 'lista' =>  $lista,
@@ -313,6 +314,42 @@ class NovaVaga extends Controller
             ]);
         }   
     }
+
+    //Candidatando-se para a vaga 
+
+    public function candidatando_se(Request $request, $id_vaga, $fk)
+    {
+        $views = new ViewsMake();
+
+        $dados = $views->listaCV($request);
+
+        $emp = DB::select('select * from usuario_pj where id_pj = ?', [$fk]);
+
+        if(Auth::check() === true)
+        {
+            DB::transaction(function () use($request, $id_vaga, $dados, $emp)
+            {
+                
+             
+
+                DB::insert('insert into candidaturas 
+                            (fk_usuario_pf, fk_vaga, fk_id_usuario_pj) 
+                            values (?, ?, ?)', 
+                            [
+                                $dados->id_pf,
+                                $id_vaga,
+                                $emp[0]->id_pj
+                            ]);
+
+                $res = DB::select('select n_candidaturas from vagas where id_nova_vaga = ?', [$id_vaga]);
+                $numero = $res[0]->n_candidaturas+1;
+                DB::table('vagas')->where('id_nova_vaga', $id_vaga)->update(['n_candidaturas' => $numero]);
+            });
+
+            return \redirect()->route('dash.perfil');
+        }
+    }
+
 
     public function busca_avancada(Request $request)
     {
@@ -335,6 +372,69 @@ class NovaVaga extends Controller
         }
     }
 
+
+    public function lista_de_candidaturas(Request $req)
+    {
+
+        if(Auth::check() === true)
+        {
+            $id_logado = Auth::id();
+            $id_pf = DB::select('select id_pf from usuario_pf where fk_id_usuario = ?', [$id_logado]);
+
+            
+            $lista = DB::select('select * from candidaturas as c 
+                                inner join usuario_pf as pf on c.fk_usuario_pf = pf.id_pf
+                                inner join usuario_pj as pj on c.fk_id_usuario_pj = pj.id_pj
+                                inner join vagas as v on  c.fk_vaga = v.id_nova_vaga where pf.id_pf = ?',
+                                [
+                                    $id_pf[0]->id_pf
+                                ]);
+
+            return $lista;
+        }
+
+    }
+
+    public function lista_de_candidaturas_view(Request $request)
+    {
+        if(Auth::check() === true)
+        {
+            $listagem = $this->lista_de_candidaturas($request);
+
+            $contagem = (int)count($listagem);
+
+            //dd($contagem);
+            return view('candidaturas',
+            [
+                'lista' => $listagem,
+                'qtde'  => $contagem
+            ]);
+        }
+    }
+
+
+    public function candidatura_vaga(Request $request, $lista, $i)
+    {
+        if(Auth::check() === true)
+        {
+
+            $results = DB::table('vagas')->where('id_nova_vaga', $lista)->get();
+
+            $lista = $results[0];
+
+            $listagem = DB::table('usuario_pj')->where('nome_fantasia',$i)->get();
+
+            $foto = $listagem[0]->foto;
+
+            //dd($lista);
+            return view('verificar-candidaturas',
+            [
+                'lista' =>  $lista,
+                'nome' => $i,
+                'foto' => $foto
+            ]);
+        }   
+    }
 
     
 
