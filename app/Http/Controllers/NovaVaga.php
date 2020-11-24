@@ -20,9 +20,25 @@ class NovaVaga extends Controller
 
         foreach($select as $key){ $id_pj = $key; }
 
+        $categoria = $request->categoria;
+
+        $id_cat = 0;
+
+        if($categoria == 'Analista de Sistemas')
+        {
+            $id_cat = 1;
+        }else if($categoria == 'Logistica')
+        {
+            $id_cat = 2;
+        }else if($categoria == 'Serviços Gerais')
+        {
+            $id_cat = 3;
+        }
+
+
         DB::insert('insert into 
-        vagas (titulo_vaga, area_profissao, numero_vagas, local_trabalho, para_premium, oport_para, salario, beneficios, horario_trab, atividades, pre_requisitos, exigencias, expira_em, fk_id_user_pj) 
-        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+        vagas (titulo_vaga, area_profissao, numero_vagas, local_trabalho, para_premium, oport_para, salario, beneficios, horario_trab, atividades, pre_requisitos, exigencias, expira_em, fk_id_user_pj, fk_categoria) 
+        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
         [
             $request->titulo_vaga,
             $request->esp_area,
@@ -37,7 +53,8 @@ class NovaVaga extends Controller
             $request->p_requisitos,
             $request->exigencias,
             20,
-            $id_pj->id_pj
+            $id_pj->id_pj,
+            $id_cat
         ]);
 
         return redirect()->route('dash.perfil');
@@ -231,6 +248,90 @@ class NovaVaga extends Controller
 
                     return redirect()->route('perfil.vagas-postadas-pj');    
             }
+        }
+    }
+
+
+    public function carregar_vagas_pf(Request $request)
+    {
+        $user_logged = Auth::id();
+
+
+        if(Auth::check() === true)
+        {
+            
+            $data_user = DB::table('usuario_pf')->where('fk_id_usuario', $user_logged)->get();
+
+            //$id_rel =  DB::table('usuario')
+            $id_da_cat = $data_user[0]->fk_categoria;
+            $vagas = DB::table('vagas')->where('fk_categoria',$id_da_cat)->get();
+
+            $vagas2 = DB::select('select * from usuario_pj as up inner join vagas as v on v.fk_id_user_pj = up.id_pj
+                                  inner join categoria_vaga as cv on v.fk_categoria = cv.id_categoria where cv.id_categoria = ?',
+                                    [
+                                        $id_da_cat
+                                    ]);
+
+            //$nome_empresa = DB::table('usuario_pj')->where('id_pj', $id)->get();
+
+            /*foreach($nome_empresa as $key)
+            {
+                $nome_fantasia = $key->nome_fantasia;
+                $foto= $key->foto;
+            }*/
+            //dd($vagas2);
+            return view('pf.vagas1',
+            [
+                'vaga' => $vagas2
+            ]);
+
+        }
+
+        
+    }
+
+
+    public function dados_da_vaga_pf(Request $request, $lista, $i)
+    {
+        if(Auth::check() === true)
+        {
+
+            $results = DB::table('vagas')->where('id_nova_vaga', $lista)->get();
+
+            $lista = $results[0];
+
+            $listagem = DB::table('usuario_pj')->where('nome_fantasia',$i)->get();
+
+            $foto = $listagem[0]->foto;
+
+            
+            return view('detalhesVaga',
+            [
+                'lista' =>  $lista,
+                'nome' => $i,
+                'foto' => $foto
+            ]);
+        }   
+    }
+
+    public function busca_avancada(Request $request)
+    {
+        if(Auth::check() === true)
+        {
+            $nome = $request->titulo;
+
+            $pesq = DB::select('select * from vagas v
+                                inner join usuario_pj as  up
+                                on v.fk_id_user_pj = up.id_pj
+                                where titulo_vaga like ?', 
+            [
+                $nome.'%' 
+            ]);
+
+            return view('busca-vaga',
+            [
+               'pesq' => $pesq
+            ]);
         }
     }
 

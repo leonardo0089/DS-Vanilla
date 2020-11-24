@@ -7,18 +7,17 @@
             </div>
             <div class="listasDetalhes">
                 <ul>
-                    <li>Área e especialização profissional: Serviços Gerais - Limpeza</li>
-                    <li>Número de vagas: 3</li>
-                    <li>Local de trabalho: São Paulo, SP</li>
+                    <li>Área e especialização profissional: {{ $lista->area_profissao }}</li>
+                    <li>Número de vagas: {{ $lista->numero_vagas }}</li>
+                    <li>Local de trabalho: {{ $lista->local_trabalho }}</li>
                     <li>Apresentamos oportunidades para:</li>
-                    <li>Auxiliar de Serviços Gerais - MEIO PERÍODO (4 horas/dia) ZONA SUL (SP)</li>
-                    <li>Salário: 618,00 + BENEFÍCIOS.</li>
-                    <li>Os Benefícios São: Vale transporte (1 condução ida e outra volta) + Cesta Básica.</li>
-                    <li>Horário de Trabalho: Segunda a Sexta feira – 13:00 as 17:00hs.</li>
-                    <li>Atividades: Realizar Limpeza geral de escritório, banheiros, retirada de lixos, servir café, etc.</li>
+                    <li>{{ $lista->oport_para }}</li>
+                    <li>Salário: R$: {{ $lista->salario }}</li>
+                    <li>Os Benefícios São: {{ $lista->beneficios }}</li>
+                    <li>Horário de Trabalho: {{ $lista->horario_trab }}</li>
+                    <li>Atividades: {{ $lista->atividades }}</li>
                     <li>Pré requisitos:</li>
-                    <li>A. Com experiência em limpeza e conservação de escritórios - comprovada</li>
-                    <li>B. Morar na zona sul.</li>
+                    <li>{{ $lista->pre_requisitos }}</li>
                 </ul>
             </div>
             <div class="tituloDescricao">
@@ -26,7 +25,7 @@
             </div>
             <div class="listasDetalhes">
                 <ul>
-                    <li>Escolaridade Mínima: Ensino Fundamental (1º grau)</li>
+                    <li>{{ $lista->exigencias }}</li>
                 </ul>
             </div>
         </div>
@@ -34,26 +33,26 @@
     <div class="segundoSobreC">
         <div class="containerSEmp">
             <div class="fotoEmpresaS">
-                <h3>Foto Empresa</h3>
+                <img src="http://localhost/DS-Vanilla/ds-vanilla/public/storage/{{$foto}}"  alt="" width="50%" height="140">
             </div>
             <div class="tituloVaga">
                 <h5>Título da vaga</h5>
-                <p>Auxiliar De Serviços Gerais - Meio Período - Zona Sul</p>
+                <p>{{ $lista->area_profissao }}</p>
             </div>
             <hr>
             <div class="tituloVaga">
                 <h5>Empresa</h5>
-                <p>Empresa Confidencial</p>
+                <p>{{ $nome ?? '' }}</p>
             </div>
             <hr>
             <div class="tituloVaga">
                 <h5>Salario</h5>
-                <p>R$ 610 - 1.350,00</p>
+                <p>R$ {{ $lista->salario }}</p>
             </div>
             <hr>
             <div class="tituloVaga">
                 <h5>Localidade</h5>
-                <p>São Paulo</p>
+                <p>{{ $lista->local_trabalho }}</p>
             </div>
             <hr>
             <div class="botaoSobre ">

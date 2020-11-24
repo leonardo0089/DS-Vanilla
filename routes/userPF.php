@@ -21,27 +21,24 @@ Route::get('/perfilPF/candidaturas', function ()
 {
     return view('pf.candidaturas');
 })->name('perfil.candidaturas');
-
-Route::get('/perfilPF/buscavagas', function ()
+// Procurando a vaga
+Route::get('/perfilPF/buscavagas', function()
 {
-    return view('pf.busca-vaga');
-})->name('perfil.buscavagas');
+    return view('busca-vaga');
+})->name('perfil.buscando');
 
+Route::post('/perfilPF/buscavagas/procurando', 'NovaVaga@busca_avancada')->name('perfil.buscavagas');
+/*////////////////////////////////////////////////////// */
 
 Route::get('detalhes1', function ()
 {
     return view('pf.vagasbusca');
 })->name('perfil.vagasbusca');
 
-Route::get('detalhes2', function () 
-{
-    return view('pf.vagas1');
-})->name('perfil.vagas1');
+//Vagas Recomendadas
+Route::get('detalhes2', 'NovaVaga@carregar_vagas_pf')->name('perfil.vagas1');
 
-Route::get('/perfilPF/buscavagas/detalhes-vaga', function ()
-{
-    return view('pf.detalhesVaga');
-})->name('perfil.detalhesvaga');
+Route::get('/detalhes-vaga/{lista}/{i}','NovaVaga@dados_da_vaga_pf')->name('perfil.detalhesvaga');
 
 //Abrindo menu laterais
 
@@ -69,5 +66,8 @@ Route::post('/cadCV', 'Cadastro_Users@inserindoCurriculo')->name('cadCV');
 
 Route::get('/atualizar-curriculo', 'ViewsMake@carregarCurriculo')->name('perfil.atualizarCV');
 Route::post('/atualizando-curriculo', 'ViewsMake@atualizaCV')->name('perfil.atualizandoCV');
+
+//Rota de Teste
+Route::get('/teste01', 'NovaVaga@dados_da_vaga_pf');
 
 

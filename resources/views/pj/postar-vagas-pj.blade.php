@@ -57,6 +57,18 @@
                           Please select a valid state.
                         </div>
                       </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom04">Categoria</label>
+                        <select class="custom-select" id="validationCustom04" required name="categoria">
+                          <option selected disabled value="">Opções</option>
+                          <option>Analista de Sistemas</option>
+                          <option>Logistica</option>
+                          <option>Serviços Gerais</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Please select a valid state.
+                        </div>
+                      </div>
                       
                     </div>
 

@@ -155,7 +155,7 @@ class Cadastro_Users extends Controller
 
                 
                 $query = DB::insert('insert into users (email, password, type) values (:email, :password, :type)', 
-                [
+                    [
                     ':email' => $request->email_pf,
                     ':password' => bcrypt($request->senha_pf),
                     ':type' => 1
@@ -164,16 +164,32 @@ class Cadastro_Users extends Controller
                     $select = DB::select('select MAX(id) as ultimo from users');
                     
                     $meuid = $this->selecionarUltimoID($select, "ultimo");
-                    
-                    DB::insert('insert into usuario_pf (nome_sobrenome, cpf, cargo_desejado, data_cadastro, fk_id_usuario) values (:nome_sobrenome, :cpf, :cargo_desejado, NOW(), :fk_id_usuario)', 
+
+                    $categoria = $request->categoria;
+
+                    $id_cat = 0;
+
+                    if($categoria == 'Analista de Sistemas')
+                    {
+                        $id_cat = 1;
+                    }else if($categoria == 'Logistica')
+                    {
+                        $id_cat = 2;
+                    }else if($categoria == 'Serviços Gerais')
+                    {
+                        $id_cat = 3;
+                    }
+
+
+                    DB::insert('insert into usuario_pf (nome_sobrenome, cpf, cargo_desejado, fk_categoria, fk_id_usuario) values (?, ?, ?, ?, ?)', 
                     [    
-                        ':nome_sobrenome' => $request->nome_e_sobrenome,
-                        ':cpf' => $request->cpf_pf,
-                        ':cargo_desejado' => $request->cargo_desejado,
-                        ':fk_id_usuario' => $meuid
+                        $request->nome_e_sobrenome,
+                        $request->cpf_pf,
+                        $request->cargo_desejado,
+                        $id_cat,
+                        $meuid
                         
                     ]);
-                    
                     
 
         });

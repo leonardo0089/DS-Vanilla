@@ -31,12 +31,14 @@ class ViewsMake extends Controller
                         $v = $key->nome_sobrenome;
                         $diasPremium = $key->dias_premium;
                     }
+                    $percent = $this->curriculoPercent($req);
                     
                     return view('perfilPF', 
                     [
                         'ds' => $v,
                         'dias' => $diasPremium,
-                        'foto' => $ft
+                        'foto' => $ft,
+                        'percent' => $percent
                     ]);
                 break;
                 case 2:
@@ -171,8 +173,35 @@ class ViewsMake extends Controller
         //Contando quantos registros foram achados
         $valor = count((array)$pesq[0]); 
 
+        if($valor == 47)
+        {
+            $valor = 100;
+            return $valor;
+            
+        }else if($valor < 45 && $valor > 35)
+        {
+            $valor = 70;
+            return $valor;
+            
+        }else if($valor < 35 && $valor > 25)
+        {
+            $valor = 50;
+            return $valor;
+        }else if($valor < 25 && $valor > 15)
+        {
+            $valor = 20;
+            return $valor;
+        }else if($valor < 15 && $valor > 5)
+        {
+            $valor = 10;
+            return $valor;
+        }else
+        {
+            $valor = 0;
+            return $valor;
+        }
+        
 
-        return $valor;
     }
 
 

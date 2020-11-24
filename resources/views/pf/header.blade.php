@@ -28,7 +28,7 @@
                     <li><a href="{{ route('site.perfilPF') }}">Inicio</a></li>
                     <li><a href="{{ route('perfil.chat') }}">Chat</a></li>
                     <li><a href="{{ route('perfil.candidaturas') }}">Candidaturas</a></li>
-                    <li><a href="{{ route('perfil.buscavagas') }}">Buscar</a></li>
+                    <li><a href="{{ route('perfil.buscando') }}">Buscar</a></li>
                 </ul>
             </div>
         </div>

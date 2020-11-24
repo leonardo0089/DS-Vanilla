@@ -15,17 +15,19 @@
 
     .containerVaga {
         display: flex;
-        height: 25%;
+        height: auto;
         background-color: white;
         border-radius: 5px;
         margin-top: 15px;
+        overflow: hidden;
     }
 
     .containerFotoVaga 
     {
        border-right: 1px solid rgba(211, 211, 211, 0.74);
        border-radius: 20px;
-       width: 30%;
+       width: 45%;
+       height: auto;
     }
 
     .containerFotoVaga img
@@ -36,15 +38,16 @@
     .textosdaVaga {
         display: flex;
         flex-direction: column;
-        padding-left: 5px;
-        flex-grow: 1;
+        padding-left: 0px;
+        width: 100%;
+        height: 100%;
     }
 
     .primeiroTextoVaga {
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 50px;
+        height: auto;
         align-items: baseline;
         justify-content: center;
     }
@@ -63,28 +66,58 @@
     {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        height: 100%;
+        width: 100%;
+        padding-left: 15px;
         flex-wrap: wrap;
+        overflow: hidden;
     }
 
     .primeiroTextoVaga h2
     {
         font-weight: 300;
     }
+    .titulo-sobre
+    {
+        display: flex;
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+
+    .sobre-a-vaga
+    {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .fonte300
+    {
+        font-weight: 300;
+    }
 </style>
 
+@foreach ($vaga as $key)
 <div class="containerVaga">
     <div class="containerFotoVaga">
-        <img src="../res/shop/img/pp.jpg" alt="" height="100%" width="100%" style="border-radius: 5px 0px 0px 5px;">
+        <img src="http://localhost/DS-Vanilla/ds-vanilla/public/storage/{{$key->foto}}" alt="" height="100%" width="100%" style="border-radius: 5px 0px 0px 5px;">
     </div>
     <div class="textosdaVaga">
         <div class="primeiroTextoVaga">
-        <a target="_parent"  href="{{ route('perfil.detalhesvaga') }}" style="padding-right: 5px;"><H2>DS-Vanilla : programador mobile</H2></a>
+        <a target="_parent"  href="{{ route('perfil.detalhesvaga', [$key->id_nova_vaga, $key->nome_fantasia]) }}" style="padding-right: 5px; font-weight: 300"><H2>{{ $key->nome_fantasia}} :{{ $key->titulo_vaga }}</H2></a>
         </div>
         <div class="seguntoTextoVaga">
-            
+            <div class="titulo-sobre fonte300">
+                Sobre a Vaga:
+            </div>
+            <div class="sobre-a-vaga fonte300">
+                <p class="fonte300">{{$key->atividades}}</p>
+            </div>
         </div>
     </div>
 
 </div>
 
+@endforeach

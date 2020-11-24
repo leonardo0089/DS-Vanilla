@@ -1,160 +1,52 @@
 @include('pf.header')
-<div class="conteudoDeBuscas">
-    <div class="containerFiltro">
-        <div class="boxDoFiltro">
-            <div class="tituloBusca">
-                <h5>Refinar Busca</h5>
-            </div>
-            <div class="inputPesquisa">
-                <form class="formularioBusca">
-                    <label for="exampleInputEmail1">Paravra-Chave</label>
-                    <div class="form-group align-items-center">
-                        <input type="text" class="form-control col-md-12" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
-                    </div>
-                    <div class="botaoDeBusca">
-                        <button type="submit" class="btn btn-danger" style="font-weight: 300;">Buscar</button>
-                    </div>
-                </form>
-            </div>
 
-            <div class="separador"></div>
-
-            <div class="inputPesquisa2">
-                <form class="formularioBusca2">
-                    <label for="exampleInputEmail1">Metodo de Trabalho</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Home Office
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Presencial
-                        </label>
-                    </div>
-                </form>
-            </div>
-
-            <div class="separador"></div>
-
-            <div class="inputPesquisa2">
-                <form class="formularioBusca">
-                    <label for="exampleInputEmail1">Cidade</label>
-                    <select class="form-control ">
-                        <option>Escolha</option>
-                        <option>São Paulo</option>
-                        <option>Austrália</option>
-                        <option>Estados Unidos</option>
-                        <option>Holanda</option>
-                        <option>Itália</option>
-                        <option>Japão</option>
-                        <option>Líbia</option>
-                        <option>México</option>
-                        <option>Nigéria</option>
-                        <option>Portugal</option>
-                    </select>
-                </form>
-            </div>
-
-            <div class="separador"></div>
-
-            <div class="inputPesquisa2">
-                <form class="formularioBusca">
-                    <label for="exampleInputEmail1">Area Profissional</label>
-                    <select class="form-control ">
-                        <option>Escolha</option>
-                        <option>Telemarketing</option>
-                        <option>Programador</option>
-                        <option>Serviços Gerais</option>
-                        <option>Mecanico</option>
-                        <option>Professor(a)</option>
-                        <option>Motorista</option>
-                        <option>Secretaria(o)</option>
-                        <option>Atendente</option>
-                        <option>Eletricista</option>
-
-                    </select>
-                </form>
-            </div>
-
-            <div class="separador"></div>
-
-            <div class="inputPesquisa2">
-                <form class="formularioBusca">
-                    <label for="exampleInputEmail1">Tipo de Contrato</label>
-                    <select class="form-control col-md-9">
-                        <option>Escolha</option>
-                        <option>Efetivo – CLT</option>
-                        <option>Prestador de Serviços (PJ)</option>
-                        <option>Outros</option>
-                        <option>Temporário</option>
-                        <option>Autonomo</option>
-                    </select>
-                </form>
-            </div>
-
-            <div class="separador"></div>
-
-            <div class="inputPesquisa2">
-                <form class="formularioBusca2">
-                    <label for="exampleInputEmail1">Data de Publicação</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Últimos 3 dias
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Última semana
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Últimos 15 dias
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                            value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Último mês
-                        </label>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    <div class="containerConteudoBusca">
-        <div class="containerVagaBusca">
-            <iframe src="{{ route('perfil.vagasbusca') }}" frameborder="0">
-            </iframe>
-        </div>
-        <nav aria-label="Page navigation example" style="background-color: rgba(194, 194, 194, 0.452);">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-    </div>
-    <div class="propagandaBusca">
-        Propaganda
+<div class="container-do-search">
+    <div class="cabecalho-do-search">
+    <form class="formulario1" action="{{ route('perfil.buscavagas') }}" method="post">
+            {!! csrf_field() !!}
+            <div class="form-row formulario1">
+                <h4>Procurar por Empresas</h4>
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" id="validationServer01" name="titulo"  required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-light" type="submit">Buscar</button>
+        </form>
+        
     </div>
 </div>
+<div class="container-da-lista">
+    @if (isset($pesq))
+
+    
+    <table class="table tabela">
+        <thead class="thead-dark bg-gradient-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome Empresa</th>
+            <th scope="col">Nome da Vaga</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($pesq as $key)
+          <tr>
+            <th scope="row">{{ $key->numero_vagas }}</th>
+            <td>{{ $key->nome_fantasia }}</td>
+            <td class="centro2">{{ $key->titulo_vaga }}</td>
+            <td class="centro">
+                <a href="{{route('perfil.detalhesvaga',[$key->id_nova_vaga, $key->nome_fantasia])}}"><button class="btn btn-danger">Visualizar</button></a>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @endif
+</div>
+
+
+
 @include('pf.footer')

@@ -15,8 +15,8 @@
                 <p class="progressP">Progresso CV</p>
                 <div class="containerProgresso">
                     <div class="progress">
-                        <div id="progresso" class="progress-bar bg-danger  pl-1" role="progressbar" style="width: 100%;"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">100%</div>
+                        <div id="progresso" class="progress-bar bg-danger" role="progressbar" style="width: {{ $percent.'%' }};"
+                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{ $percent.'%' }}</div>
                     </div>
                 </div>
                 <hr>
@@ -60,3 +60,4 @@
 
 </div>
 @include('pf.footer')
+

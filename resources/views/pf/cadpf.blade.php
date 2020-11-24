@@ -66,10 +66,22 @@
                           </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
                               <label for="inputEmail4">CPF</label>
                               <input type="text" class="form-control" onkeypress="mascara(this, '###.###.###-##')" maxlength="14" id="inputEmail4" name="cpf_pf">
                             </div>
+                            <div class="col-md-7 mb-3">
+                                <label for="validationCustom04">Categoria:</label>
+                              <select class="custom-select" id="validationCustom04" required  name="categoria">
+                                  <option selected disabled value="">Escolha</option>
+                                  <option>Analista de Sistemas</option>
+                                  <option>Logistica</option>
+                                  <option>Serviços Gerais</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Please select a valid state.
+                                </div>
+                              </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
