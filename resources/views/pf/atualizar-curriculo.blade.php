@@ -105,6 +105,13 @@
                     </div>
 
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="inputEmail4">Endereço</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="endereco">
+                      </div>
+                      
+                </div>
             </div>
         </div>
 </main>

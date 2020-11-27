@@ -40,11 +40,9 @@ Route::get('/detalhes-vaga/{lista}/{i}','NovaVaga@dados_da_vaga_pf')->name('perf
 //Abrindo menu laterais
 
 
+//Tela de comprar Premium
 
-Route::get('/perfilPF/comprarPremium', function ()
-{
-    return view('pf.comprar-premium');
-})->name('perfil.comprar-premium');
+Route::get('/perfilPF/comprarPremium', 'ViewsMake@recuperar_dados_boleto')->name('perfil.comprar-premium');
 
 //Rotas Ações
 Route::post('/logando', 'Controlador_Login@login')->name('logar_pf');
@@ -61,7 +59,7 @@ Route::get('/atualizar-curriculo', 'ViewsMake@carregarCurriculo')->name('perfil.
 Route::post('/atualizando-curriculo', 'ViewsMake@atualizaCV')->name('perfil.atualizandoCV');
 
 //Rota de Teste
-Route::get('/teste01', 'NovaVaga@lista_de_candidaturas');
+Route::get('/teste01', 'ViewsMake@recuperar_dados_boleto');
 
 
 //Candidatando-se
@@ -76,4 +74,8 @@ Route::get('/vaga-candidatado/{id}/{nome}', 'NovaVaga@candidatura_vaga')->name('
 Route::get('/perfilPF/atualizardadosPG/view', 'Cadastro_Users@cadastrar_forma_pagamento_view')->name('perfil.pf.att.pgt');
 Route::post('/perfilPF/atualizardadosPG/atualizando','Cadastro_Users@cadastrar_forma_pagamento')->name('perfil.pf.cadpgto');
 
+//Rotas do Boleto PF
 
+Route::get('/boletoTeste', 'ViewsMake@telaBoleto1')->name('perfil.telaBoleto');
+
+Route::get('/boleto', 'ViewsMake@montandoBoleto')->name('boletoNa.tela');

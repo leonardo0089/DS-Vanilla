@@ -30,9 +30,9 @@ class Cadastro_Users extends Controller
             $path = $this->savePic($request);
             //Inserindo dados do curriculo
             DB::insert('insert into curriculo 
-            (dados, nacionalidade, telefone, sexo, deficiencia, msg_whats, estado_civil, data_nasc, fk_id_pf, foto) 
+            (dados, nacionalidade, telefone, sexo, deficiencia, msg_whats, estado_civil, data_nasc, fk_id_pf, foto, endereco) 
             values 
-            (:dados, :nacionalidade, :telefone, :sexo, :deficiencia, :msg_whats, :estado_civil, :data_nasc, :fk_id_pf, :foto)', 
+            (:dados, :nacionalidade, :telefone, :sexo, :deficiencia, :msg_whats, :estado_civil, :data_nasc, :fk_id_pf, :foto, :endereco)', 
             [
                 ':dados' => $request->dados_do_usuario,
                 ':nacionalidade' => $request->nacionalidade,
@@ -43,7 +43,8 @@ class Cadastro_Users extends Controller
                 ':estado_civil' => $request->estado_civil,
                 ':data_nasc' => $request->nascimento,
                 ':fk_id_pf' => $uId1,
-                ':foto' => $path
+                ':foto' => $path,
+                ':endereco' => $request->endereco
             ]);
 
             

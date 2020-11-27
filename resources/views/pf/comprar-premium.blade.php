@@ -20,16 +20,16 @@
                   <select class="form-control form-control-md col-md-5">
                     <option> Opções</option>
                     <option>Boleto</option>
-                    <option>Deposito Bancario</option>
+                    <option disabled>Deposito Bancario</option>
                   </select>
                   <div class="tituloEndereco">
                     <h4>Parcelar em </h4>
                 </div>
                   <select class="form-control form-control-md col-md-3">
-                    <option> Opções</option>
+                    <option selected disabled> Opções</option>
                     <option>1x</option>
-                    <option>2x</option>
-                    <option>3x</option>
+                    <option disabled>2x</option>
+                    <option disabled>3x</option>
                   </select>
             </div>
         </div>
@@ -57,10 +57,10 @@
             </div>
             <div class="conteudoTextosDetalhes">
                 <div class="tituloDetalhesProd">
-                    <h6>Acesso Premium 30 Dias</h6>
+                    <h6>{{ $prod->nome_prod }}</h6>
                 </div>
                 <div class="descProdutoPremium">
-                    <p>Este produto dara acesso premium para o assinante tendo inumeras vantagens dentro da plataforma</p>
+                    <p>{{ $prod->descricao }}</p>
                 </div>
             </div>
         </div>
@@ -77,8 +77,8 @@
                     <p>Preço com Desconto:</p>
                 </div>
                 <div class="precoDoPremium">
-                    <p>R$: 80,89</p>
-                    <p>R$: 48,89</p>
+                    <p>R$: {{ $prod->preco }}</p>
+                    <p>R$: {{ $prod->preco}}</p>
                 </div>
             </div>
             <hr class="my-2 col-md-10 novaHR">
@@ -87,7 +87,7 @@
                     <h3>Total:</h3>
                 </div>
                 <div class="total-da-compra">
-                    <p>R$: 48,89</p>
+                    <p>R$: {{ $prod->preco }}</p>
                 </div>
             </div>
             <div class="container-do-jumbo-advertencia">
@@ -101,7 +101,7 @@
             </div>
 
             <div class="botao-de-comprar ">
-                <button type="submit" class="btn btn-danger col-md-11">Comprar</button>
+                <a href="{{ route('perfil.telaBoleto') }}"><button type="submit" class="btn btn-danger col-md-12">Comprar</button></a>
             </div>
             
         </div>

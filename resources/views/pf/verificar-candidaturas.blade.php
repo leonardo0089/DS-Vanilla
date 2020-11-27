@@ -56,7 +56,7 @@
             </div>
             <hr>
             <div class="botaoSobre ">
-                <a href="{{ route('perfil.pf.candidatar', [$lista->id_nova_vaga, $lista->fk_id_user_pj])}} "><button class="btn btn-danger" style=" width: 120px;">Cadidatar-se</button></a>
+                <a href="{{ route('perfil.candidaturas')}} "><button class="btn btn-danger" style=" width: 120px;">Voltar</button></a>
             </div>
         </div>
     </div>

@@ -991,3 +991,21 @@ hr.novaHR
       margin-top: 15px;
       padding: 15px 0px 0px 45px;
   }
+
+  /*Boleto Estilo*/
+
+  .container-do-boleto
+  {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+.imgBol img
+{
+    width: 16px;
+    height: 16px;
+}
+  /*****************************************************/
