@@ -396,7 +396,7 @@ class ViewsMake extends Controller
     {
         if(Auth::check() === true)
         {
-            return view('boleto-pf');
+            return view('pf.boleto-pf');
         }
     }
 

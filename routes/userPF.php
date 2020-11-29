@@ -76,6 +76,6 @@ Route::post('/perfilPF/atualizardadosPG/atualizando','Cadastro_Users@cadastrar_f
 
 //Rotas do Boleto PF
 
-Route::get('/boletoTeste', 'ViewsMake@telaBoleto1')->name('perfil.telaBoleto');
+Route::get('/boleto-pf', 'ViewsMake@telaBoleto1')->name('perfil.telaBoleto');
 
-Route::get('/boleto', 'ViewsMake@montandoBoleto')->name('boletoNa.tela');
+Route::get('/boleto-pf-gerado', 'ViewsMake@montandoBoleto')->name('boletoNa.tela');

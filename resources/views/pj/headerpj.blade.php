@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../res/site/css-Perfil/perfil.css">
     <link rel="stylesheet" href="../../res/site/css-Perfil/perfilPJ.css">
+    <link rel="stylesheet" href="../../res/site/css-Perfil/perfil-m.css">
     <link rel="stylesheet" href="../../res/site/css-Vaga/sobreVaga.css">
     <link rel="stylesheet" href="../../res/css-PJ/perfil-PJ.css">
     <title>@yield('titulopagina')</title>

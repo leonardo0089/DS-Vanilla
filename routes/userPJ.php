@@ -8,15 +8,10 @@ Route::get('/cadpj', function () {
 // Area do Usuario PJ
 Route::get('/perfil-pj/atualizar-dados','ViewsMake@alterarDadosView')->name("site.cadastroPJc");
 
-Route::get('/cadpj/atualizar-dados-PJ', function () 
-{
-    return view('pj.atualizar-dados-pj');
-})->name("perfil.atualizar-dados-pj");
+Route::get('/cadpj/atualizar-dados-PJ', 'FuncoesPJ@makeViewattPagPJ')->name("perfil.atualizar-dados-pj");
 
-Route::get('/cadpj/comprar-premium-pj', function () 
-{
-    return view('pj.comprar-premium-pj');
-})->name("perfil.comprar-premium-pj");
+//Comprar o Premium e geração do boleto
+Route::get('/cadpj/comprar-premium-pj','FuncoesPJ@makeViewComprarPremiumPJ')->name("perfil.comprar-premium-pj");
 
 
 //Rotas da navegação superior
@@ -34,10 +29,8 @@ Route::get('/perfilPJ/vagas-postadas', 'NovaVaga@makeVagaPost')->name('perfil.va
 Route::get('/listagem++','NovaVaga@makenewVaga')->name('perfil.listagem++');
 
 
-Route::get('/perfilPJ/busca-funcionario', function()
-{
-    return view('busca-funcionario');
-})->name('perfil.busca-funcionario');
+Route::get('/perfilPJ/busca-funcionario','FuncoesPJ@makeViewBuscaFunc')->name('perfil.busca-funcionario');
+Route::post('/perfilPJ/busca-realizada','FuncoesPJ@searchFuncionario')->name('perfil.realizar-busca');
 
 Route::get('/busca++--', function()
 {
@@ -62,7 +55,7 @@ Route::get('/editar-vaga/{id_vaga}', 'NovaVaga@carregar_Alterar')->name('carrega
 Route::post('/atualizando-vaga/{id_da_vaga}', 'NovaVaga@atualizar_Vaga')->name('carregar.salvando.alteracao');
 
 //Rota de teste
-Route::get('/teste', 'ViewsMake@curriculoPercent')->name('teste');
+Route::get('/teste', 'FuncoesPJ@makeViewComprarPremiumPJ')->name('teste');
 //Descrição da vaga
 Route::get('/detalhes-vaga/{n_vaga}', 'NovaVaga@detalhesVagas_Postadas')->name('perfil.pj.detalhesVaga');
 
@@ -70,4 +63,18 @@ Route::get('/cont-cadastro', function()
 {
     return view('cont-cad-pj');
 })->name('cont.cad-pj');
+
+//Rota para Iserir ou Atualizar dados de Pagamento
+
+Route::any('/atualizando-pj-pgto','FuncoesPJ@insertOrUpdate')->name('perfilPJ.insertoOrUpdate');
+
+//Rotas para o Boleto PJ
+
+Route::get('/criacao-boleto', 'FuncoesPJ@telaBoleto1')->name('perfil.pj.telaBoleto');
+
+Route::get('/boleto-montado', 'FuncoesPJ@montandoBoleto')->name('boletoNa.tela1');
+
+//Perfil do Usuario PF mostrado para o usuario PJ
+
+Route::get('/perfil-do-pf/{id}', 'FuncoesPJ@mostrarDadosUser')->name('perfil-pf-para-pj');
 
