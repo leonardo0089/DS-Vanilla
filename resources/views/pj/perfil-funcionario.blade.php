@@ -65,7 +65,7 @@
           <h5>Ações</h5>
         </div>
         <div class="footer-botoes">
-          <a href=""><button type="button" class="btn btn-outline-danger">Voltar</button></a>
+        <a href="{{ route('perfil.busca-funcionario') }}"><button type="button" class="btn btn-outline-danger">Voltar</button></a>
           <a href=""><button type="button" class="btn btn-outline-danger" style="margin-left: 15px">Conversar</button></a>
         </div>
       </div>
