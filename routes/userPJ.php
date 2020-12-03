@@ -19,10 +19,7 @@ Route::get('/cadpj/comprar-premium-pj','FuncoesPJ@makeViewComprarPremiumPJ')->na
 Route::get('/perfilPJ/postar-nova-vaga', 'ViewsMake@novaVaga')->name('perfil.postar-vaga');
 
 
-Route::get('/perfilPJ/chat-pj', function()
-{
-    return view('chat-pj');
-})->name('perfil.chat-pj');
+Route::get('/perfilPJ/chat-pj','FuncoesPJ@makeViewChat')->name('perfil.chat-pj');
 
 Route::get('/perfilPJ/vagas-postadas', 'NovaVaga@makeVagaPost')->name('perfil.vagas-postadas-pj');
 
@@ -30,6 +27,7 @@ Route::get('/listagem++','NovaVaga@makenewVaga')->name('perfil.listagem++');
 
 
 Route::get('/perfilPJ/busca-funcionario','FuncoesPJ@makeViewBuscaFunc')->name('perfil.busca-funcionario');
+//Realizar Busca
 Route::post('/perfilPJ/busca-realizada','FuncoesPJ@searchFuncionario')->name('perfil.realizar-busca');
 
 Route::get('/busca++--', function()
@@ -55,7 +53,7 @@ Route::get('/editar-vaga/{id_vaga}', 'NovaVaga@carregar_Alterar')->name('carrega
 Route::post('/atualizando-vaga/{id_da_vaga}', 'NovaVaga@atualizar_Vaga')->name('carregar.salvando.alteracao');
 
 //Rota de teste
-Route::get('/teste', 'FuncoesPJ@makeViewComprarPremiumPJ')->name('teste');
+Route::get('/teste/{id}', 'FuncoesPJ@index')->name('teste');
 //Descrição da vaga
 Route::get('/detalhes-vaga/{n_vaga}', 'NovaVaga@detalhesVagas_Postadas')->name('perfil.pj.detalhesVaga');
 
@@ -77,4 +75,16 @@ Route::get('/boleto-montado', 'FuncoesPJ@montandoBoleto')->name('boletoNa.tela1'
 //Perfil do Usuario PF mostrado para o usuario PJ
 
 Route::get('/perfil-do-pf/{id}', 'FuncoesPJ@mostrarDadosUser')->name('perfil-pf-para-pj');
+
+
+//Rota para conversa
+
+Route::get('/chat/{idpf}/{id}', 'FuncoesPJ@novaConversa')->name('chat-com-pf');
+Route::get('/conversa/{nome}/{id_conversa}', 'FuncoesPJ@entrarConversa')->name('na.conversa');
+Route::get('/mensagens/{id}', 'FuncoesPJ@index')->name('msgs');
+
+//View Interna
+Route::get('/load', 'FuncoesPJ@viewInterna')->name('interna');
+
+Route::post('/msg/{id_chat}/{id_pf}/{nome}/{idc}','FuncoesPJ@enviarMsg')->name('enviar.msg');
 

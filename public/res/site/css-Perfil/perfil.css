@@ -333,7 +333,7 @@ iframe
 {
     display: grid;
     grid-template-columns:25% 2fr 15% ;
-    grid-template-rows: 100vh;
+    grid-template-rows: 100%;
     grid-template-areas: 
         'conversas conversasC propChat'
     ;
@@ -424,20 +424,21 @@ iframe
     background-color: white;
     width: 100%;
     margin-right: 25px;
-    height: 95%;
+    height: 100%;
     border-radius: 15px;
     border: 1px solid rgba(138, 138, 138, 0.466);
 }
 
 .conversasInternas
 {
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: 4px;
     background-color: rgba(194, 194, 194, 0.452);;
     border-radius: 5px 5px 0px 0px;
     display: flex;
     flex-direction: column;
-    height: 80%;
-    width: 95%;
+    height: 100%;
+    width: 98%;
 }
 
 .navegacaoChat
@@ -1007,5 +1008,38 @@ hr.novaHR
 {
     width: 16px;
     height: 16px;
+}
+
+
+.conteudo-das-conversas
+{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(173, 169, 169, 0.479);
+    width: 96%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.balao-da-conversa
+{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 60%;
+    margin: 15px 0px 15px 20px;
+    padding: 10px 10px 10px 10px;
+}
+
+.nome-da-pessoa
+{
+    display: flex;
+
+}
+
+.msg-pessoa
+{
+
 }
   /*****************************************************/

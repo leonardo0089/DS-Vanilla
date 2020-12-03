@@ -308,6 +308,7 @@ class FuncoesPJ extends Controller
                                 [
                                     $nome . '%'
                                 ]);
+
             return view('busca-funcionario',
             [
                 'pesq' => $pesq
@@ -336,5 +337,233 @@ class FuncoesPJ extends Controller
             ]);
         }
     }
+
+    public function initChat(Request $request)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true)
+        {
+
+            $chat = DB::table('chat')->where('fk_id_users', $user->id)->get();
+
+            if(count($chat) == 0)
+            {
+                DB::transaction(function () use($request, $user) 
+                {
+                    DB::insert('insert into chat 
+                    (fk_id_users, type_user) 
+                    values (?, ?)', 
+                    [
+                        $user->id,
+                        $user->type
+                    ]);
+                });
+            }
+
+        }
+    }
+
+
+    public function novaConversa(Request $request, $id_pf, $id)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+
+            $pesq = DB::select('select id_chat from chat where fk_id_users = ?', [$id]);
+
+            $query = DB::table('conversa')->where('fk_id_chat', $pesq[0]->id_chat)->get();
+           // $query2 = DB::table('chat')->where('fk_id_users', $id)->get();
+
+            $id_logged = Auth::id();
+            
+            $select_idPJ = DB::select('select pj.id_pj from usuario_pj as pj
+            inner join users as u on pj.fk_id_usuario = u.id
+            where u.id = ?', [$id_logged]);
+
+            $user_pf = DB::select('select * from conversa as c 
+            inner join  chat as ch  on c.fk_id_chat = ch.id_chat
+            inner join  users as  u on ch.fk_id_users = u.id
+            inner join  usuario_pf as pf on pf.fk_id_usuario = u.id
+            inner join  curriculo as cur on cur.fk_id_pf = pf.id_pf
+            where c.fk_pj = ?', 
+            [
+                $select_idPJ[0]->id_pj
+            ]);
+
+            if(count($query) == 0)
+            {
+                DB::insert('insert into conversa
+                (fk_id_chat, fk_pf, fk_pj) 
+                values (?, ?, ?)', 
+                [
+                    $pesq[0]->id_chat,
+                    $id_pf,
+                    $select_idPJ[0]->id_pj
+                ]);
+                
+
+            }
+            return \redirect()->route('perfil.chat-pj');
+            
+            
+
+        }
+    }
+
+
+    public function makeViewChat(Request $request)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $id_logged = Auth::id();
+            
+            $select_idPJ = DB::select('select pj.id_pj from usuario_pj as pj
+            inner join users as u on pj.fk_id_usuario = u.id
+            where u.id = ?', [$id_logged]);
+
+            $user_pf = DB::select('select * from conversa as c 
+            inner join  chat as ch  on c.fk_id_chat = ch.id_chat
+            inner join  users as  u on ch.fk_id_users = u.id
+            inner join  usuario_pf as pf on pf.fk_id_usuario = u.id
+            inner join  curriculo as cur on cur.fk_id_pf = pf.id_pf
+            where c.fk_pj = ?', 
+            [
+                $select_idPJ[0]->id_pj
+            ]);
+
+            
+          
+            
+            return view('chat-pj',
+            [
+                'usuario' => $user_pf,
+                
+            ]);
+        }
+    }
+
+    public function enviarMsg(Request $request, $id, $id_pessoa, $nome, $id_chat)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+
+            
+            
+            DB::insert('insert into mensagens
+            (fk_id_conversa, msg, fk_pessoa) 
+            values 
+            (?, ?, ?)', 
+            [
+                $id,
+                $request->msg,
+                $id_pessoa
+            ]);
+
+            return \redirect()->route('na.conversa', [$nome, $id_chat]);
+        }
+
+    }
+
+    public function index(Request $request, $chat)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $pesq = DB::select('select * from  mensagens as m 
+            inner join conversa as c  on m.fk_id_conversa = c.id_conversa
+            inner join usuario_pj as pj on c.fk_pj = pj.id_pj
+            inner join users as u on pj.fk_id_usuario = u.id
+            where u.id = ? and c.fk_id_chat = ?', 
+            [
+                $user->id,
+                $chat
+            ]);
+        
+            
+            return $pesq;
+        }
+    }
+
+    public function viewInterna()
+    {
+        return view('tela_chat_interno');
+    }
+
+    public function makeMsgs(Request $request)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $pesq = DB::select('select * from mensagens where fk_pessoa = ? and id_conversa = ?', 
+            [
+
+            ]);
+
+            return view('tela_chat_interno');
+        }
+    }
+
+
+    public function entrarConversa(Request $request,$nome,$id_chat)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $pesq = $this->pesq_Chats($request);
+            $conversas = $this->index($request, $id_chat);
+            
+            $ids = DB::select('select * from  chat as ch 
+            inner join conversa as c on  c.fk_id_chat = ch.id_chat
+            inner join usuario_pf as pf on pf.id_pf = c.fk_pf
+            where c.fk_id_chat = ?', [$id_chat]);
+            
+            //dd($ids);
+            
+            return view('chat-pj',
+            [
+                'usuario' => $pesq,
+                'nome' => $nome,
+                'id_chat'=> $id_chat,
+                'conv'=> $conversas,
+                'id_conversa' => $ids[0]->id_conversa,
+                'id_pessoa' =>  $ids[0]->fk_id_users,
+                'nome' =>  $ids[0]->nome_sobrenome,
+                'id_do_chat' =>  $ids[0]->id_chat,
+
+            ]);
+        }
+
+    }
+
+
+    private function pesq_Chats(Request $request)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $id_logged = Auth::id();
+            
+            $select_idPJ = DB::select('select pj.id_pj from usuario_pj as pj
+            inner join users as u on pj.fk_id_usuario = u.id
+            where u.id = ?', [$id_logged]);
+
+            $user_pf = DB::select('select * from conversa as c 
+            inner join  chat as ch  on c.fk_id_chat = ch.id_chat
+            inner join  users as  u on ch.fk_id_users = u.id
+            inner join  usuario_pf as pf on pf.fk_id_usuario = u.id
+            inner join  curriculo as cur on cur.fk_id_pf = pf.id_pf
+            where c.fk_pj = ?', 
+            [
+                $select_idPJ[0]->id_pj
+            ]);
+
+            return $user_pf;
+        }
+    }
+
+
 
 }

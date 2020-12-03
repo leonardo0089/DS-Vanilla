@@ -46,7 +46,7 @@
             <th scope="row">{{ $key->nome_categoria }}</th>
             <td class="centro">
                 <a href="{{route('perfil-pf-para-pj',[$key->id])}}"><button class="btn btn-outline-danger">Visualizar</button></a>
-                <a href="#"><button class="btn btn-outline-danger">Conversar</button></a>
+                <a href="{{route('chat-com-pf',[$key->id_pf, $key->id])}}"><button class="btn btn-outline-danger">Conversar</button></a>
             </td>
           </tr>
           

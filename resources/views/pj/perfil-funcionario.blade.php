@@ -66,7 +66,7 @@
         </div>
         <div class="footer-botoes">
         <a href="{{ route('perfil.busca-funcionario') }}"><button type="button" class="btn btn-outline-danger">Voltar</button></a>
-          <a href=""><button type="button" class="btn btn-outline-danger" style="margin-left: 15px">Conversar</button></a>
+          <a href="{{route('chat-com-pf',[$pesq->id_pf, $pesq->id])}}"><button type="button" class="btn btn-outline-danger" style="margin-left: 15px">Conversar</button></a>
         </div>
       </div>
     </div>

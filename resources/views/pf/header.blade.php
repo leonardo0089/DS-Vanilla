@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/res/site/css/cadGlobal.css">
     <link rel="stylesheet" href="/res/site/css/cadastroHeader.css">
     <link rel="stylesheet" href="/res/site/css/cadformulario.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/res/site/css-Perfil/perfil.css">
     <link rel="stylesheet" href="/res/site/css-Perfil/perfilPJ.css">

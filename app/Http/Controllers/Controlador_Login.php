@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Modelo;
 use App\Models\Usuario;
 use App\User;
+use App\Http\Controllers\FuncoesPJ;
 
 class Controlador_Login extends Controller
 {
@@ -27,15 +28,18 @@ class Controlador_Login extends Controller
         
         if ($user && Hash::check($senha, $user->password)) // encontrou o usuário
         {
+            $f = new FuncoesPJ();
             $tipo = $user->type;
             switch($tipo)
             {
                 case 1:
                     Auth::login($user);
-                    return \redirect()->intended('perfil-pf');
+                    $f->initChat($req);
+                    return \redirect()->route('site.perfilPF');
                 break;
                 case 2:
                     Auth::login($user);
+                    $f->initChat($req);
                     return \redirect()->route('dash.perfil');
                 break;
             }
