@@ -96,6 +96,7 @@ class NovaVaga extends Controller
             }
             $vagas = DB::table('vagas')->where('fk_id_user_pj', $id)->get();
 
+            
             return view('vagas-postadas-listagem',
             [
                 'vagas' => $vagas,
@@ -360,7 +361,8 @@ class NovaVaga extends Controller
             $pesq = DB::select('select * from vagas v
                                 inner join usuario_pj as  up
                                 on v.fk_id_user_pj = up.id_pj
-                                where titulo_vaga like ?', 
+                                inner join categoria_vaga as cat on v.fk_categoria = cat.id_categoria
+                                where cat.nome_categoria like ?', 
             [
                 $nome.'%' 
             ]);

@@ -7,7 +7,7 @@
             <div class="form-row formulario1">
                 <h4>Procurar por Empresas</h4>
                 <div class="col-md-12 mb-3">
-                  <input type="text" class="form-control" id="validationServer01" name="titulo"  required>
+                  <input type="text" class="form-control" placeholder="Digite a categoria da vaga ou apenas a inicial nos acharemos :)" id="validationServer01" name="titulo"  required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>

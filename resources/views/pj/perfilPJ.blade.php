@@ -19,9 +19,6 @@
                     <a href="{{ route('site.cadastroPJc') }}"><p class="fa fa-user  fonteParagrafo">  Alterar Cadastro</p></a>
                 </div>
                 <div class="linkparaAlterarDados">
-                    <a href=""><p class="fa fa-envelope  fonteParagrafo">  Verificar E-mails</p></a>
-                </div>
-                <div class="linkparaAlterarDados">
                     <a href=""><p class="fa fa-lock fonteParagrafo">  Alterar Senha</p></a>
                 </div>
             </div>
@@ -41,15 +38,7 @@
                 <div class="linkparaAlterarDados">
                     <a href="{{ route('perfil.comprar-premium-pj') }}"><p class="fa fa-dollar  fonteParagrafo">  Comprar Premium</p></a>
                 </div>
-                <div class="containerTituloPJFinanceiro">
-                    <h4>Contrato</h4>
-                </div>
-                <div class="linkparaAlterarDados">
-                    <a href=""><p class="fa fa-file  fonteParagrafo">  Gerar Contrato</p></a>
-                </div>
-                <div class="linkparaAlterarDados">
-                    <a href=""><p class="fa fa-list  fonteParagrafo">  Lista de Contratos</p></a>
-                </div>
+                
                 <br>
                 <div class="linkparaAlterarDados">
                     <p class="fa fa-question-circle  fonteParagrafo">  E-mail de Suporte: ds-Vanilla@gmail.com</p>

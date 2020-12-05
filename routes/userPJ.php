@@ -53,7 +53,7 @@ Route::get('/editar-vaga/{id_vaga}', 'NovaVaga@carregar_Alterar')->name('carrega
 Route::post('/atualizando-vaga/{id_da_vaga}', 'NovaVaga@atualizar_Vaga')->name('carregar.salvando.alteracao');
 
 //Rota de teste
-Route::get('/teste/{id}', 'FuncoesPJ@index')->name('teste');
+Route::get('/teste', 'ChatPJ@makeViewChat')->name('teste');
 //Descrição da vaga
 Route::get('/detalhes-vaga/{n_vaga}', 'NovaVaga@detalhesVagas_Postadas')->name('perfil.pj.detalhesVaga');
 
@@ -88,3 +88,6 @@ Route::get('/load', 'FuncoesPJ@viewInterna')->name('interna');
 
 Route::post('/msg/{id_chat}/{id_pf}/{nome}/{idc}','FuncoesPJ@enviarMsg')->name('enviar.msg');
 
+//Rotas para mostrar ao usuario todas as candidaturas para a vaga postada
+
+Route::get('/lista-candidaturas/{id_vaga}/{id_pj}', 'FuncoesPJ@viewCandidaturas')->name('candidaturas.view');

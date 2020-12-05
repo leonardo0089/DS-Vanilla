@@ -352,12 +352,14 @@ iframe
     height: 60px;
     margin: 0;
     padding-left: 10px;
+    
        
 }
 
 .fotoPessoa img
 {
-    border-radius: 50px;
+    border-radius: 40px;
+    border: 1px solid rgba(80, 79, 79, 0.699);
 }
 
 .conversas1
@@ -420,6 +422,7 @@ iframe
 {
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
     align-items: center;
     background-color: white;
     width: 100%;
@@ -460,11 +463,11 @@ iframe
    flex-direction: column;
    height: 100%;
    width: 60%;
-   margin: 10px 0px 0px 10px;
+   margin: 10px 0px 15px 10px;
    background-color: white;
-   padding: 15px 0px 0px 15px;
+   padding: 15px 0px 15px 15px;
    justify-content: space-around;
-   border-radius: 15px;
+   border-radius: 0px;
    
 }
 .mensagemE p
@@ -668,8 +671,10 @@ iframe
     display: flex;
     flex-direction: column;
     background-color: white;
-    height: 95%;
+    height: auto;
     width: 50%;
+    padding: 15px;
+    margin: 5px;
     border-radius: 7px;
     box-shadow: var(--shadow);
 }
@@ -1038,8 +1043,43 @@ hr.novaHR
 
 }
 
-.msg-pessoa
-{
 
-}
   /*****************************************************/
+
+.container-tabela-candidaturas
+{
+    width: 100%;
+    padding: 20px;
+}
+
+.titulo-da-listagem-cond
+{
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    justify-content: center;
+}
+
+.titulo-da-listagem-cond h4
+{
+    
+    text-decoration: underline rgb(46, 46, 46) solid;
+}
+
+.cont-btns
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+.cont-btns button
+{
+    margin: 0px 5px 0px 5px;
+}
+.tamanho
+{
+    width: 25%;
+}

@@ -11,11 +11,8 @@ Route::get('/cadastroPF', function ()
 })->name('site.cadastroPF');
 
 
-
-Route::get('/perfilPF/chat', function ()
-{
-    return view('pf.chat');
-})->name('perfil.chat');
+//Rota que retorna o chat
+Route::get('/perfilPF/chat', 'ChatPF@conversas')->name('perfil.chat');
 
 Route::get('/perfilPF/candidaturas', 'NovaVaga@lista_de_candidaturas_view')->name('perfil.candidaturas');
 // Procurando a vaga
@@ -59,7 +56,7 @@ Route::get('/atualizar-curriculo', 'ViewsMake@carregarCurriculo')->name('perfil.
 Route::post('/atualizando-curriculo', 'ViewsMake@atualizaCV')->name('perfil.atualizandoCV');
 
 //Rota de Teste
-Route::get('/teste01', 'ViewsMake@recuperar_dados_boleto');
+Route::get('/teste01', 'ChatPF@conversas');
 
 
 //Candidatando-se
@@ -79,3 +76,13 @@ Route::post('/perfilPF/atualizardadosPG/atualizando','Cadastro_Users@cadastrar_f
 Route::get('/boleto-pf', 'ViewsMake@telaBoleto1')->name('perfil.telaBoleto');
 
 Route::get('/boleto-pf-gerado', 'ViewsMake@montandoBoleto')->name('boletoNa.tela');
+
+
+//Rotas para o Chat
+
+//Clicando na conversa
+Route::get('/conversa/{id_conversa}/{id_pessoa}/{id_pf}', 'ChatPF@clicando_na_Conversa')->name('clicando.na.conversa');
+
+//Enviando Mensagem 
+
+Route::post('users/{id_conversa}/{id_pessoa}', 'ChatPF@enviar_Mensagem')->name('enviar.msg.pf');

@@ -391,8 +391,9 @@ class FuncoesPJ extends Controller
                 $select_idPJ[0]->id_pj
             ]);
 
-            if(count($query) == 0)
-            {
+            $b = DB::select('select * from conversa as c where c.fk_pf = ? and c.fk_pj = ?', [$id_pf, $select_idPJ[0]->id_pj]);
+              
+            if(count($b) == 0){
                 DB::insert('insert into conversa
                 (fk_id_chat, fk_pf, fk_pj) 
                 values (?, ?, ?)', 
@@ -402,9 +403,9 @@ class FuncoesPJ extends Controller
                     $select_idPJ[0]->id_pj
                 ]);
                 
-
-            }
-            return \redirect()->route('perfil.chat-pj');
+                return \redirect()->route('perfil.chat-pj');
+                }
+                return \redirect()->route('perfil.chat-pj');
             
             
 
@@ -440,6 +441,7 @@ class FuncoesPJ extends Controller
             [
                 'usuario' => $user_pf,
                 
+                
             ]);
         }
     }
@@ -450,17 +452,27 @@ class FuncoesPJ extends Controller
         if(Auth::check() === true && $user->type == 2)
         {
 
-            
-            
-            DB::insert('insert into mensagens
-            (fk_id_conversa, msg, fk_pessoa) 
-            values 
-            (?, ?, ?)', 
-            [
-                $id,
-                $request->msg,
-                $id_pessoa
-            ]);
+                $id_pj = DB::select('select pj.id_pj from usuario_pj as pj  inner join users as u on pj.fk_id_usuario = u.id where u.id = ?', [$user->id]);
+                $id_pf = DB::select('select pf.id_pf from usuario_pf as pf where pf.nome_sobrenome = ?', [$nome]);
+
+                $ids = DB::select('select c.id_conversa from  conversa as c where c.fk_pj = ? and c.fk_pf = ?', 
+                [
+                    $id_pj[0]->id_pj,
+                    $id_pf[0]->id_pf
+                ]);
+                
+                
+                
+                DB::insert('insert into mensagens
+                (fk_id_conversa, msg, quem_enviou, quem_recebeu) 
+                values 
+                (?, ?, ?, ?)', 
+                [
+                    $ids[0]->id_conversa,
+                    $request->msg,
+                    $user->id,
+                    $id_pessoa
+                ]);
 
             return \redirect()->route('na.conversa', [$nome, $id_chat]);
         }
@@ -475,6 +487,7 @@ class FuncoesPJ extends Controller
             $pesq = DB::select('select * from  mensagens as m 
             inner join conversa as c  on m.fk_id_conversa = c.id_conversa
             inner join usuario_pj as pj on c.fk_pj = pj.id_pj
+            inner join usuario_pf as pf on c.fk_pf = pf.id_pf
             inner join users as u on pj.fk_id_usuario = u.id
             where u.id = ? and c.fk_id_chat = ?', 
             [
@@ -514,13 +527,18 @@ class FuncoesPJ extends Controller
         {
             $pesq = $this->pesq_Chats($request);
             $conversas = $this->index($request, $id_chat);
-            
             $ids = DB::select('select * from  chat as ch 
             inner join conversa as c on  c.fk_id_chat = ch.id_chat
             inner join usuario_pf as pf on pf.id_pf = c.fk_pf
-            where c.fk_id_chat = ?', [$id_chat]);
+            where c.fk_id_chat = ? and pf.nome_sobrenome = ?', [$id_chat, $nome]);
             
-            //dd($ids);
+            
+            
+            
+            $dados = $this->pesqMsgsEnviadas($request, $ids[0]->fk_id_users);
+            $dados2 = $this->pesqMsgsRecebidas($request, $ids[0]->fk_id_users);
+
+           
             
             return view('chat-pj',
             [
@@ -532,6 +550,8 @@ class FuncoesPJ extends Controller
                 'id_pessoa' =>  $ids[0]->fk_id_users,
                 'nome' =>  $ids[0]->nome_sobrenome,
                 'id_do_chat' =>  $ids[0]->id_chat,
+                'dados1'=> $dados,
+                'dados2'=> $dados2
 
             ]);
         }
@@ -562,6 +582,79 @@ class FuncoesPJ extends Controller
 
             return $user_pf;
         }
+    }
+
+
+    public function pesqMsgsEnviadas(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $dados =    DB::select('select m.msg, u.`type`, pj.nome_fantasia from mensagens as m
+                    inner join conversa as c on m.fk_id_conversa = c.id_conversa
+                    inner join users as u on m.quem_enviou = u.id
+                    inner join usuario_pj as  pj on pj.fk_id_usuario = u.id
+                    where m.quem_enviou = ? and m.quem_recebeu = ? ',
+                    [
+                        $user->id,
+                        $id,
+                    ]);
+        return $dados;
+    }
+    public function pesqMsgsRecebidas(Request $request, $id)
+    {
+        $user = Auth::user();
+        
+        $quem_rec = DB::select('select m.msg, u.`type`, pf.nome_sobrenome from mensagens as m
+                    inner join conversa as c on m.fk_id_conversa = c.id_conversa
+                    inner join users as u on m.quem_enviou = u.id
+                    inner join usuario_pf as  pf on pf.fk_id_usuario = u.id
+                    where m.quem_enviou = ? and m.quem_recebeu = ?',
+                    [
+                        $id,
+                        $user->id
+                    ]);
+
+        return $quem_rec;
+    }
+
+
+    //Metodo para lista todas as candidaturas mostrando 
+    //Nome
+    //Categoria em que o funcionario está cadastrado na plataforma
+
+    public function viewCandidaturas(Request $request, $id_vaga, $id_pj)
+    {
+        $user = Auth::user();
+        if(Auth::check() === true && $user->type == 2)
+        {
+            $dados = $this->dados_funcLista($request, $id_vaga);
+            $foto = $dados[0]->foto;
+            $dias = $dados[0]->dias_premium;
+            $ds = $dados[0]->nome_fantasia;
+            return view('lista_de_candidatos',
+            [
+                'foto' => $foto,
+                'premium' => $dias,
+                'nome' => $ds,
+                'dados'=> $dados
+            ]);
+        }
+        return \redirect()->route('site.login');
+    }
+
+
+    private function dados_funcLista(Request $request, $id_vaga)
+    {
+        $data = DB::select('select * from candidaturas as c 
+                            inner join usuario_pf as pf on c.fk_usuario_pf = pf.id_pf
+                            inner join usuario_pj as pj on c.fk_id_usuario_pj = pj.id_pj
+                            inner join users as u on pf.fk_id_usuario = u.id
+                            where c.fk_vaga = ?', 
+                            [$id_vaga]);
+
+        return $data;
+
+
     }
 
 

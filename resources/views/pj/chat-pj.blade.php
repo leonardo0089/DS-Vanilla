@@ -29,21 +29,47 @@
         <div class="containerChatConversas">
 
             <div class="conteudo-das-conversas">
-               
-            @if ($conv ?? '' > 0)      
-            @foreach ($conv  as $item)
-                   
-                <div class="balao-da-conversa">
-                    <div class="nome-da-pessoa">
-                    <h6>{{$item->nome_fantasia}}</h6>
+    
+                
+             
+                 @if ($dados1 ?? '0'[0] > 0 && $dados1 ?? '0'[0]->type == 2)
+                     
+                  @foreach ($dados1 as $item)
+                      
+                  
+                    <div class="balao-da-conversa">
+                        <div class="nome-da-pessoa">
+                        <h6>{{$item->nome_fantasia}}</h6>
+                        </div>
+                        <div class="msg-pessoa">
+                        <p>{{$item->msg}}</p>
+                        </div>
                     </div>
-                    <div class="msg-pessoa">
-                    <p>{{$item->msg}}</p>
-                    </div>
-                </div>
 
-            @endforeach 
-            @endif  
+                    @endforeach
+
+                 @endif
+
+                @if ($dados2 ?? '0'[0] > 0 && $dados2 ?? '0'[0]->type == 1)
+
+                    @foreach ($dados2 as $item2)
+                        
+                    <div class="funcionario">
+                        <div class="mensagemE">
+                            <div class="tituloChats">
+                                <h6>{{$item2->nome_sobrenome}}</h6>
+                                <p>{{$item2->msg}}</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    @endforeach
+
+                @endif
+
+           
+            
             </div>
                     <div class="navegacaoChat">
                         <div class="input-group mt-3 col-md-12" >

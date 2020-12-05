@@ -1,106 +1,81 @@
 @include('pf.header')
 <div class="containerDoChat">
     <div class="conversasChat">
-        <div class="conversas1">
+        @if ($pesq ?? '' > 0)
+            
+        
+        @foreach ($pesq as $key)
+            
+            <a href="{{route('clicando.na.conversa', [$key->id_conversa, $key->fk_pj, $key->fk_pf])}}" style="text-decoration: none; color: black"><div class="conversas1">
             <div class="fotoPessoa">
-                <img src="/res/site/img/stefany.jpg" alt="" width="100%" height="100%">
+                <img src="http://localhost/DS-Vanilla/ds-vanilla/public/storage/{{$key->foto ?? ''}}" alt="" width="100%" height="100%">
             </div>
             <div class="colunaChat">
                 <div class="nomePessoa">
-                    <h6 style="font-weight: 300;">Stefany Gomes</h6>
+                    <h6 style="font-weight: 300;">{{$key->nome_fantasia}}</h6>
                 </div>
                 <div class="trechoConversa">
-                    <p>asdkjhasjkdhaskjasdasdasdasdsasdasdasdas</p>
+                    <p>Mensagens da Empresa</p>
                 </div>
             </div>
             
         </div>
+        </a>
+        @endforeach
+        @endif
 
-
-        <div class="conversas1">
-            <div class="fotoPessoa">
-                <img src="/res/site/img/foto1.jpg" alt="" width="100%" height="100%">
-            </div>
-            <div class="colunaChat">
-                <div class="nomePessoa">
-                    <h6 style="font-weight: 300;">Leonardo Magnon</h6>
-                </div>
-                <div class="trechoConversa">
-                    <p>asdkjhasjkdhaskjasdasdasdasdsasdasdasdas</p>
-                </div>
-            </div>
-            
-        </div>
-
-
-        <div class="conversas1">
-            <div class="fotoPessoa">
-                <img src="/res/site/img/debora.jpg" alt="" width="100%" height="100%">
-            </div>
-            <div class="colunaChat">
-                <div class="nomePessoa">
-                    <h6 style="font-weight: 300;">Debora Martins</h6>
-                </div>
-                <div class="trechoConversa">
-                    <p>asdkjhasjkdhaskjasdasdasdasdsasdasdasdas</p>
-                </div>
-            </div>
-            
-        </div>
-
-
-        <div class="conversas1">
-            <div class="fotoPessoa">
-                <img src="/res/site/img/vitor.jpg" alt="" width="100%" height="100%">
-            </div>
-            <div class="colunaChat">
-                <div class="nomePessoa">
-                    <h6 style="font-weight: 300;">Vitor</h6>
-                </div>
-                <div class="trechoConversa">
-                    <p>asdkjhasjkdhaskjasdasdasdasdsasdasdasdas</p>
-                </div>
-            </div>
-            
-        </div>
+        
     </div>
     <div class="conteudoConversas">
         <div class="containerChatConversas">
             <div class="conversasInternas">
+                @if ($dados ?? '0'[0] > 0)
+                    
+                @foreach ($dados as $item)
+                    
+                
                 <div class="empresa">
                     <div class="mensagemE">
                         <div class="tituloChats">
-                            <h6>Stefany Gomes</h6>
-                            <p>asdasdasdasdasdasdassssssdasdasdasdasd</p>
+                        <h6>{{$item->nome_sobrenome}}</h6>
+                            <p>{{$item->msg}}</p>
                         </div>
-                        <div class="horario"><p>18:35</p></div>
+
                     </div>
                 </div>
-                <div class="empresa">
-                    <div class="mensagemE">
-                        <div class="tituloChats">
-                            <h6>Stefany Gomes</h6>
-                            <p>asdasdasdasdasdasdassssssdasdasdasdasd</p>
-                        </div>
-                        <div class="horario"><p>18:35</p></div>
-                    </div>
-                </div>
+
+                @endforeach
+
+                @endif
+
+                @if ($dados2 ?? '0'[0] > 0)
+                    
+                @foreach ($dados2 as $item2)
                 <div class="funcionario">
                     <div class="mensagemE">
                         <div class="tituloChats">
-                            <h6>Leonardo Magnon</h6>
-                            <p>asdasdasdasdasdasdassssssdasdasdasdasd</p>
+                            <h6>{{$item2->nome_fantasia}}</h6>
+                            <p>{{$item2->msg}}</p>
                         </div>
-                        <div class="horario"><p>18:35</p></div>
+                        
                     </div>
                 </div>
+                @endforeach
+                @endif
             </div>
             <div class="navegacaoChat">
                 <div class="input-group mt-3 col-md-12" >
-                    <input type="text" class="form-control col-md-12" placeholder="Digite sua Mensagem" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-radius: 30px 0px 0px 30px;">
+                    @if (count($pesq ?? '') > 0)
+                        
+                    
+                    <form class="form-row col-md-12 alin" action="{{route('enviar.msg.pf',[$pesq[0]->id_conversa, $pesq[0]->fk_id_usuario])}}" method="post">
+                        {!! csrf_field() !!}
+                    <input type="text" name="msg" class="form-control col-md-10 " placeholder="Digite sua Mensagem" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-radius: 30px 0px 0px 30px;">
                     <div class="input-group-append">
-                      <button class="btn btn-danger" type="button" id="button-addon2" style="border-radius: 0px 30px 30px 0px;">Enviar</button>
+                      <button class="btn btn-danger" type="submit" id="button-addon2" style="border-radius: 0px 30px 30px 0px;">Enviar</button>
                     </div>
+                </form>
+                @endif
                   </div>
             </div>
         </div>

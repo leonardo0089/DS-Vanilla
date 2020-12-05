@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../../res/css-PJ/perfil-PJ.css">
-<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 <style>
     html, body
     {
@@ -23,10 +23,10 @@
             <div class="container-titulo-vaga-postada">
                 <a href="" class="configLinks"><h4 class="pesodaFonte300">{{ $vaga->titulo_vaga }}</h4></a>
                 <div class="badges-propostas">
-                    <button type="button" class="badge badge-pill btn btn-light ">
+                    <a target="_parent" href="{{route('candidaturas.view', [$vaga->id_nova_vaga, $vaga->fk_id_user_pj])}}"><button type="button" class="badge badge-pill btn btn-light ">
                     Propostas <span class="badge badge-pill badge-danger">{{ $vaga->n_candidaturas }}</span>
                         <span class="sr-only">Mensagens não lidas</span>
-                    </button>
+                    </button></a>
                     <button type="button" class="badge badge-pill btn btn-light ">
                         Expira em <span class="badge badge-pill badge-danger">{{ $vaga->expira_em }}</span> dias
                         <span class="sr-only">Mensagens não lidas</span>
@@ -50,6 +50,9 @@
         </div>
     </div>
     @endforeach
+
+    <script type="text/javascript" src="/js/function.js"></script>
+    <script type="text/javascript" src="{{asset("/js/app.js")}}"></script>
 
 
 

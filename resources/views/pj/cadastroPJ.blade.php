@@ -19,13 +19,6 @@
                           Looks good!
                         </div>
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="validationCustom02">Foto Usuario</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        <div class="valid-feedback">
-                          Looks good!
-                        </div>
-                      </div>
                     </div>
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
