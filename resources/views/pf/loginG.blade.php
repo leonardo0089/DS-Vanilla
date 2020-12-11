@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../res/login/css/global.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <title>DS-Vanilla</title>
 </head>
@@ -36,9 +36,22 @@
                             <a href="{{ route('site.inicio') }}">Cadastre-se</a>
                         </div>
                       </form>
-                </div>
-            </div>
+                    </div>
+                    <div class="erros">
+                      @if ($error ?? '' === true)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          {{$eMsg ?? ''}}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                      @endif
+                    </div>
+                  </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="/js/function.js"></script>
+    <script type="text/javascript" src="{{asset("/js/app.js")}}"></script>
 </body>
 </html>

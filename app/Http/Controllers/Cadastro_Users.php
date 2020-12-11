@@ -266,7 +266,7 @@ class Cadastro_Users extends Controller
         if(Auth::check() === true)
         {
             $dados = DB::select('select * from dados_pagamento where fk_id_user = ?', [$id]);
-            if(count($dados) != 0 )
+            if(count($dados) > 0 )
             {
                 
 
@@ -286,7 +286,8 @@ class Cadastro_Users extends Controller
         if(Auth::check() === true)
         {
             $id_user = Auth::id();
-
+            $dados = DB::select('select * from dados_pagamento where fk_id_user = ?', [$id_user]);
+            if(count($dados) == 0){
             DB::insert('insert into dados_pagamento 
                         (fk_id_user, nome_pessoa, tipo_pagamento, endereco, cpf, estado, celular) 
                         values (?, ?, ?, ?, ?, ?, ?)', 
@@ -299,8 +300,21 @@ class Cadastro_Users extends Controller
                             $request->estado,
                             $request->celular
                         ]);
+                        return redirect()->route('perfil.pf.att.pgt');
+            }else{
 
-                   return redirect()->route('dash.perfil');
+                DB::table('dados_pagamento')->where('fk_id_user', $id_user)
+                ->update(
+                    [
+                        'nome_pessoa' => $request->nome, 
+                        'tipo_pagamento' => $request->tipo_pg, 
+                        'endereco' => $request->end, 
+                        'cpf' => $request->cpf, 
+                        'estado' => $request->estado, 
+                        'celular' => $request->celular
+                    ]);
+                   return redirect()->route('perfil.pf.att.pgt');
+            }
         }
     }
 

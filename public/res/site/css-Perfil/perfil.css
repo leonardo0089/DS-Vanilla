@@ -189,7 +189,7 @@ footer
 .containerIframe
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 20px 10px 20px 10px;
     height: 100%;
 }
@@ -200,6 +200,7 @@ iframe
     width: 100%;
     display: flex;
     flex-direction: column;
+    
 }
 
 .containerFiltro
@@ -1083,3 +1084,66 @@ hr.novaHR
 {
     width: 25%;
 }
+
+/*Vagas*/
+
+.conteiner-das-vagas
+{
+    display: flex;
+    background-color: white;
+    border: 1px solid rgba(116, 115, 115, 0.589);
+    height: auto;
+    width: 98%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.conteiner-da-foto
+{
+    width: 35%;
+    background-color: rgb(134, 131, 131);
+    border-right: 1px solid rgb(134, 131, 131);
+
+}
+
+.conteiner-textos-sobre-vaga
+{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    
+    align-items: center;
+}
+
+.primeiro-texto-sobre-vaga
+{
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 35px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.primeiro-texto-sobre-vaga a
+{
+    text-decoration: none;
+    color: black;
+}
+.primeiro-texto-sobre-vaga a:hover
+{
+    color: red;
+}
+
+.segundo-texto-sobre-vaga
+{
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px;
+    overflow: hidden;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+}
+
+

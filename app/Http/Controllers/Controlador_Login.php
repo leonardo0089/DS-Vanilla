@@ -28,6 +28,7 @@ class Controlador_Login extends Controller
         
         if ($user && Hash::check($senha, $user->password)) // encontrou o usuário
         {
+            $error = false;
             $f = new FuncoesPJ();
             $tipo = $user->type;
             switch($tipo)
@@ -44,11 +45,16 @@ class Controlador_Login extends Controller
                 break;
             }
             
-        }
-        else
+        }else
         {
-        return Redirect::to('/')->withErrors('Prontuario ou senha inválidos!');
+            $error = true;
+            $msg = "Endereço de E-mail ou Senha estão errados";
+            return view('loginG',
+            [
+                'error'=> $error,
+                'eMsg' => $msg
+            ]);
         }
                 
-            }
+    }
 }

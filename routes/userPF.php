@@ -81,7 +81,7 @@ Route::get('/boleto-pf-gerado', 'ViewsMake@montandoBoleto')->name('boletoNa.tela
 //Rotas para o Chat
 
 //Clicando na conversa
-Route::get('/conversa/{id_conversa}/{id_pessoa}/{id_pf}', 'ChatPF@clicando_na_Conversa')->name('clicando.na.conversa');
+Route::get('/conversa/{id_conversa}/{id_pessoa}/{id_pf}/{id_da_pessoa}', 'ChatPF@clicando_na_Conversa')->name('clicando.na.conversa');
 
 //Enviando Mensagem 
 

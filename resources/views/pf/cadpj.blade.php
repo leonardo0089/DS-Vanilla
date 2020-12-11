@@ -19,10 +19,10 @@
                 </div>
                 <div class="conteudoL">
                     <ul style="list-style-image: url('../res/site/img/check.png');">
-                        <li>Candidate-se às melhores vagas do país.</li>
-                        <li>Fique visível para milhares de empresas.</li>
-                        <li>Receba vagas adequadas ao seu perfil.</li>
-                        <li>Conheça as empresas por dentro.</li>
+                        <li>Procure e ache os melhores funcionario do país.</li>
+                        <li>Fique visível para milhares funcionarios.</li>
+                        <li>Receba cv de varios funcionarios.</li>
+                        <li>Entre em contato com funcionarios na hora.</li>
                     </ul>
                 </div>
             </div>  

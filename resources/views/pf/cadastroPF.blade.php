@@ -369,13 +369,13 @@
                         <label>Nivel</label>
                         <select class="form-control" name="nivelE">
                             <option>Selecione o nivel</option>
-                            <option>Ensino Fundamental (1º grau)</option>
-                            <option>Curso extra-curricular / Profissionalizante</option>
-                            <option>Curso Técnico</option>
-                            <option>Ensino Superior</option>
-                            <option>Pós-graduação - Especialização/MBA</option>
-                            <option>Pós-graduação - Mestrado</option>
-                            <option>Pós-graduação - Doutorado</option>
+                            <option>Estagiário</option>
+                            <option>Operacional</option>
+                            <option>Auxiliar</option>
+                            <option>Assistente</option>
+                            <option>Analista</option>
+                            <option>Encarregado</option>
+                            <option>Especialista</option>
                           </select>
                     </div>
                 </div>

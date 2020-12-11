@@ -45,7 +45,7 @@ class ChatPF extends Controller
         return $pesq;
     }
 
-    public function clicando_na_Conversa(Request $request, $id_conversa, $id_pj, $id_pf)
+    public function clicando_na_Conversa(Request $request, $id_conversa, $id_pj, $id_pf, $id_pessoa)
     {
         $user = Auth::user();
         if(Auth::check() === true && $user->type == 1)
@@ -74,7 +74,11 @@ class ChatPF extends Controller
                 'pesq' => $pesq,
                 'msgs' => $msgs,
                 'dados' =>$dados,
-                'dados2'=>$dados2
+                'dados2'=>$dados2,
+                'id_conversa' => $id_conversa,
+                'id_pj' => $id_pj,
+                'id_pf' => $id_pf,
+                'id_pessoa' => $id_pessoa
 
             ]);
         }
@@ -104,12 +108,19 @@ class ChatPF extends Controller
         $user = Auth::user();
         if(Auth::check() === true && $user->type == 1)
         {
+
+
+
             $idpf = DB::select('select pf.id_pf from users as u 
                                 inner join usuario_pf as pf  on pf.fk_id_usuario = u.id
                                 where u.id = ?', [$user->id]);
+
+            
             $idpj = DB::select('select pj.id_pj from users as u 
                                 inner join usuario_pj as pj  on pj.fk_id_usuario = u.id
                                 where u.id = ?', [$fk_pessoa]);
+
+           
             
             DB::insert('insert into mensagens
             (fk_id_conversa, msg, quem_enviou, quem_recebeu) 
@@ -122,7 +133,7 @@ class ChatPF extends Controller
                 $fk_pessoa
             ]);
 
-            return \redirect()->route('clicando.na.conversa',[$id_conversa, $idpj[0]->id_pj, $idpf[0]->id_pf]);
+            return \redirect()->route('clicando.na.conversa',[$id_conversa, $idpj[0]->id_pj, $idpf[0]->id_pf, $fk_pessoa]);
         }
     }
 

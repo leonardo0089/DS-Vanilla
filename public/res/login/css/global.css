@@ -73,9 +73,9 @@ body ,html
 .fundored
 {
     background-color: red;
-    width: 55px;
+    width: 48px;
     height: 10px;
-    margin-right: 90px;
+    margin-right: 80px;
 }
 .form1
 {
@@ -107,4 +107,10 @@ body ,html
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.erros
+{
+    display: flex;
+    margin-top: 15px;
 }

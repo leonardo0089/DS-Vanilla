@@ -6,7 +6,7 @@
         
         @foreach ($pesq as $key)
             
-            <a href="{{route('clicando.na.conversa', [$key->id_conversa, $key->fk_pj, $key->fk_pf])}}" style="text-decoration: none; color: black"><div class="conversas1">
+            <a href="{{route('clicando.na.conversa', [$key->id_conversa, $key->fk_pj, $key->fk_pf, $key->fk_id_usuario])}}" style="text-decoration: none; color: black"><div class="conversas1">
             <div class="fotoPessoa">
                 <img src="http://localhost/DS-Vanilla/ds-vanilla/public/storage/{{$key->foto ?? ''}}" alt="" width="100%" height="100%">
             </div>
@@ -68,7 +68,7 @@
                     @if (count($pesq ?? '') > 0)
                         
                     
-                    <form class="form-row col-md-12 alin" action="{{route('enviar.msg.pf',[$pesq[0]->id_conversa, $pesq[0]->fk_id_usuario])}}" method="post">
+                    <form class="form-row col-md-12 alin" action="{{route('enviar.msg.pf',[$id_conversa ?? '', $id_pessoa ?? ''])}}" method="post">
                         {!! csrf_field() !!}
                     <input type="text" name="msg" class="form-control col-md-10 " placeholder="Digite sua Mensagem" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-radius: 30px 0px 0px 30px;">
                     <div class="input-group-append">

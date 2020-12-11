@@ -281,7 +281,7 @@ class NovaVaga extends Controller
                 $nome_fantasia = $key->nome_fantasia;
                 $foto= $key->foto;
             }*/
-            //dd($vagas2);
+            
             return view('pf.vagas1',
             [
                 'vaga' => $vagas2

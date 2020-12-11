@@ -48,27 +48,27 @@
 
                     @endforeach
 
-                 @endif
-
-                @if ($dados2 ?? '0'[0] > 0 && $dados2 ?? '0'[0]->type == 1)
-
-                    @foreach ($dados2 as $item2)
-                        
-                    <div class="funcionario">
-                        <div class="mensagemE">
-                            <div class="tituloChats">
-                                <h6>{{$item2->nome_sobrenome}}</h6>
-                                <p>{{$item2->msg}}</p>
-                            </div>
+                    @if ($dados2 ?? '0'[0] > 0 && $dados2 ?? '0'[0]->type == 1)
+    
+                        @foreach ($dados2 as $item2)
                             
+                        <div class="funcionario">
+                            <div class="mensagemE">
+                                <div class="tituloChats">
+                                    <h6>{{$item2->nome_sobrenome}}</h6>
+                                    <p>{{$item2->msg}}</p>
+                                </div>
+                                
+                            </div>
                         </div>
-                    </div>
-
-                    @endforeach
-
-                @endif
-
-           
+    
+                        @endforeach
+    
+                    @endif
+                    @endif
+                    
+                    
+                    
             
             </div>
                     <div class="navegacaoChat">
